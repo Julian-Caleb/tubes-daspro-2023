@@ -1,14 +1,47 @@
-# import library
-import csv
-import os
+from AdditionalFunction import Length, Split, Append
 
-# fungsi login
+# FUNGSI LOGIN
+# 
+
+# KAMUS
+#
+
+# ALGORTIMA
 def login() :
     
     # mengambil file
-    with open("user.csv") as file:
-        reader = csv.reader(file)
+    with open('user.csv', 'r') as file:
+        data = file.read()
         
-        # mencetak isi
-        for row in reader :
-            print(row)
+    # memetakan data menjadi array
+    arrayOfData = Split(data, "\n")
+    
+    # menghilangkan ; dari array
+    i = 0
+    while i < Length(arrayOfData) :
+        arrayOfData[i] = Split(arrayOfData[i], ";")
+        i += 1
+    
+    # meminta username dan password
+    username = input("Username: ")
+    password = input("Password: ")
+
+    # iterasi untuk mengecek username dan password
+    i = 0
+    while i < Length(arrayOfData) :
+        if arrayOfData[i][0] == username :
+            if arrayOfData[i][1] == password:
+                print(f"Selamat datang, {username}!")
+                print("Masukkan command 'help' untuk daftar command yang dapat kamu panggil.")
+                break
+            else:
+                print("Password salah!")
+                break
+        elif i == Length(arrayOfData) - 1:
+            print("Username tidak terdaftar!")
+            break
+        else :
+            i += 1
+
+            
+

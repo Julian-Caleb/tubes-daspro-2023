@@ -1,14 +1,16 @@
 # PROGRAM UTAMA
-# (SPESIFIKASI)
+# 
 
 # KAMUS GLOBAL
-# (KAMUS)
+# 
 
 # ALGORITMA
 # import function
-import F01_login
+from F01_login import login
 
 # main program
-F01_login.login()
+func = input(">>> ")
+if func == "login" :
+    arrayOfData = login()
 
 
