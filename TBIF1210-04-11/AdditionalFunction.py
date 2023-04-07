@@ -6,7 +6,7 @@
 
 # ALGORITMA
 def Length (a) :
-    return len(a) # sementara
+    return len(a)
 
 #-----------------------------------------------------------------------------------#
 

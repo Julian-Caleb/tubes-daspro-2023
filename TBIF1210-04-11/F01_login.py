@@ -44,9 +44,3 @@ def login() :
             break
         else :
             i += 1
-    
-    
-    
-
-            
-

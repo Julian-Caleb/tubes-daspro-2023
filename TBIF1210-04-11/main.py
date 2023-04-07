@@ -15,8 +15,6 @@ while True :
     if func == "login" :
         role = login()
     elif func == "logout" :
-        if role != "" :
-            role = logout()
-        else : 
-            print("Anda Belum login!")
+        role = logout()
+
 
