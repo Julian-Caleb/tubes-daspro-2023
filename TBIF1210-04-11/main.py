@@ -7,10 +7,16 @@
 # ALGORITMA
 # import function
 from F01_login import login
+from F02_logout import logout
 
 # main program
-func = input(">>> ")
-if func == "login" :
-    arrayOfData = login()
-
+while True :
+    func = input(">>> ")
+    if func == "login" :
+        role = login()
+    elif func == "logout" :
+        if role != "" :
+            role = logout()
+        else : 
+            print("Anda Belum login!")
 

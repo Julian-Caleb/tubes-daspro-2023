@@ -33,7 +33,9 @@ def login() :
             if arrayOfData[i][1] == password:
                 print(f"Selamat datang, {username}!")
                 print("Masukkan command 'help' untuk daftar command yang dapat kamu panggil.")
-                break
+                
+                # return role sebagai tanda login
+                return(arrayOfData[i][2])
             else:
                 print("Password salah!")
                 break
@@ -42,6 +44,9 @@ def login() :
             break
         else :
             i += 1
+    
+    
+    
 
             
 
