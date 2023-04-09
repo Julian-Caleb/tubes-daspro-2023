@@ -12,8 +12,13 @@ from F02_logout import logout
 # main program
 while True :
     func = input(">>> ")
+    
+    # F01 - login
     if func == "login" :
         role = login()
+        # print(role)
+        
+    # F02 - logout
     elif func == "logout" :
         role = logout()
 
