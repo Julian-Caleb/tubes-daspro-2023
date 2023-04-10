@@ -41,6 +41,10 @@ def Split (arr : List, spliter : str) -> List :
 def Append (arr : List, element : str) -> List :
     return arr.append(element) # sementara
 
+def Append2 (a, n) :
+    z = a + n
+    return z # sama gk nih?
+
 #-----------------------------------------------------------------------------------#
 
 # FUNCTION ORDCHAR
@@ -108,7 +112,3 @@ def CompareArrayOfString (arr : List, op : str) -> List :
         output = CompareString (output, arr[n], op)
         n += 1
     return output
-
-def Append (a, n) :
-    z = a + n
-    return z # sama gk nih?
