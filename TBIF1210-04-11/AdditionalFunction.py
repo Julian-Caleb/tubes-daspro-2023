@@ -10,7 +10,13 @@ from typing import List
 # ALGORITMA
 def Length (arr : List) -> List :
     return len(arr)
- 
+
+
+def Length2 (arr : List) -> List :
+    count = 0
+    for i in arr:
+        count+=1
+    return count
 #-----------------------------------------------------------------------------------#
 
 # FUNCTION SPLIT
@@ -102,7 +108,7 @@ def CompareArrayOfString (arr : List, op : str) -> List :
         output = CompareString (output, arr[n], op)
         n += 1
     return output
-    
 
-        
-        
+def Append (a, n) :
+    z = a + n
+    return z # sama gk nih?
