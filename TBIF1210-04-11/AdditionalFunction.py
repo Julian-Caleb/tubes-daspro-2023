@@ -43,7 +43,7 @@ def Append (arr : List, element : str) -> List :
 
 def Append2 (a, n) :
     z = a + n
-    return z # sama gk nih?
+    return z # sama gk nih? element nya tuh list bukan?
 
 #-----------------------------------------------------------------------------------#
 
