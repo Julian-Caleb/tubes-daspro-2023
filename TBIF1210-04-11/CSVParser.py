@@ -62,3 +62,5 @@ def CSVParser(file : str, columnName : str) -> List :
 # APLIKASI
 # print(CSVParser("user.csv", "role"))
 
+#-----------------------------------------------------------------------------------#
+
