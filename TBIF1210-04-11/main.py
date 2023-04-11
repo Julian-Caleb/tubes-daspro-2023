@@ -28,6 +28,7 @@ from F02_logout import logout
 # main program
 # inisialisasi variable
 (username, password, role, isLoggedIn) = ("", "", "", False)
+seed = 69 # sebagai seed untuk algoritma lcg_rng
 
 # mengambil array yang dibutuhkan
 CSVfile = "user.csv"

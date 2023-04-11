@@ -1,5 +1,3 @@
-#-----------------------------------------------------------------------------------#
-
 # TYPE CSVARRAY
 # Tipe bentukan CSVArray merupakan bentukan yang mengandung sebuah array yang berisi data dari CSV 
 # berdasarkan kolom yang diinginkan dan jumlah elemen efektif dari array
@@ -14,3 +12,4 @@ class CSVArray :
         self.Neff = Neff;
 
 #-----------------------------------------------------------------------------------#
+
