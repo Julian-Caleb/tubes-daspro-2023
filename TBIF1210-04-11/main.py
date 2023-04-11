@@ -2,11 +2,26 @@
 # 
 
 # KAMUS GLOBAL
-# 
+# constant NMax = 100
+
+# username : string 
+# password : string
+# role : string
+# func : string 
+# isLoggedIn : boolean
+
+# CSVfile : string
+# type CSVArray : <arr : array [0..NMax-1] of string,
+# 				Neff : integer >
+# CSVUsername : CSVArray
+# CSVPassword : CSVArray
+# CSVRole : CSVArray
 
 # ALGORITMA
 # import function
 from CSVParser import CSVParser
+from AdditionalFunction import Length
+from TipeBentukan import CSVArray
 from F01_login import login
 from F02_logout import logout
 
@@ -16,9 +31,9 @@ from F02_logout import logout
 
 # mengambil array yang dibutuhkan
 CSVfile = "user.csv"
-CSVUsername = CSVParser(CSVfile, "username")
-CSVPassword = CSVParser(CSVfile, "password")
-CSVRole = CSVParser(CSVfile, "role")
+CSVUsername = CSVArray(CSVParser(CSVfile, "username"), Length(CSVParser(CSVfile, "username")))
+CSVPassword = CSVArray(CSVParser(CSVfile, "password"), Length(CSVParser(CSVfile, "password")))
+CSVRole = CSVArray(CSVParser(CSVfile, "role"), Length(CSVParser(CSVfile, "role")))
 
 # looping 
 while True :

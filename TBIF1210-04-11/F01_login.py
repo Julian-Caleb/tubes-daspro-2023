@@ -28,20 +28,20 @@ def login(username : str, password : str, role : str, isLoggedIn : bool, CSVUser
         
         # iterasi untuk mengecek username dan password
         i = 0
-        while CSVUsername[i] != "MARK" :
-            if CSVUsername[i] == usernameInput :
-                if CSVPassword[i] == passwordInput:
-                    print(f"Selamat datang, {CSVUsername[i]}!")
+        while CSVUsername.arr[i] != "MARK" :
+            if CSVUsername.arr[i] == usernameInput :
+                if CSVPassword.arr[i] == passwordInput:
+                    print(f"Selamat datang, {CSVUsername.arr[i]}!")
                     print('Masukkan command "help" untuk daftar command yang dapat kamu panggil.')  
                     # return role sebagai tanda login
-                    (username, password, role, isLoggedIn) = (CSVUsername[i], CSVPassword[i], CSVRole[i], True)
+                    (username, password, role, isLoggedIn) = (CSVUsername.arr[i], CSVPassword.arr[i], CSVRole.arr[i], True)
                     break
                 else:
                     print("Password salah!")
                     break
             else :
                 i += 1
-        if CSVUsername[i] == "MARK" :
+        if CSVUsername.arr[i] == "MARK" :
             print("Username tidak terdaftar!")
             
     # return username, password, role, isLoggedIn

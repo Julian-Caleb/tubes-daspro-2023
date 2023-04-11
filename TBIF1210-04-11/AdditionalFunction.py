@@ -2,21 +2,29 @@
 from typing import List
 
 # FUNCTION LENGTH
-# Fungsi dibuat untuk menentukan banyak elemen dalam suatu array
+# Fungsi dibuat untuk menentukan banyak elemen efektif dalam suatu array
 
 # KAMUS
 # arr : array of elements (integer atau char)
 
 # ALGORITMA
-def Length (arr : List) -> List :
+def Length (arr : List) -> int : # pengganti len()
+    # Menggunakan "MARK" sebagai mark
+    # i = 0
+    # while arr[i] != "MARK" :
+    #     i += 1
+    # return i
     return len(arr)
-
 
 def Length2 (arr : List) -> List :
     count = 0
     for i in arr:
         count+=1
     return count
+    
+# APLIKASI
+# print(Length(["a", "b", "c", "d", "MARK", None]))
+
 #-----------------------------------------------------------------------------------#
 
 # FUNCTION SPLIT
