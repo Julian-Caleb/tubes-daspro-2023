@@ -11,7 +11,7 @@ from typing import List
 #
 
 # ALGORTIMA
-def login(username : str, password : str, role : str, isLoggedIn : bool, CSVUsername: List, CSVPassword: List, CSVRole: List) -> (str, str, str, bool):
+def Login(username : str, password : str, role : str, isLoggedIn : bool, CSVUsername: List, CSVPassword: List, CSVRole: List) -> (str, str, str, bool):
     
     # mengecek apakah login atau belum
     # jika sudah

@@ -1,8 +1,11 @@
 # FUNCTION LCG_RNG
 # 
 
-# KAMUS
-#
+# KAMUS LOKAL
+# seed : int
+# a : int = 1103515245
+# c : int = 12345
+# m : int = 2**31
 
 # ALGORITMA
 def lcg_rng(seed : int, a : int = 1103515245, c : int = 12345, m : int = 2**31):

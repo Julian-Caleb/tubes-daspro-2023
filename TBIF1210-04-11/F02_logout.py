@@ -5,7 +5,7 @@
 #
 
 # ALGORTIMA
-def logout(isLoggedIn : bool) -> (str, str, str, bool) :
+def Logout(isLoggedIn : bool) -> (str, str, str, bool) :
     
     # Kalau belum login
     if not(isLoggedIn) :
