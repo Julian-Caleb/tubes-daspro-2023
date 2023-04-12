@@ -1,5 +1,5 @@
 # import function and variable
-from AdditionalFunction import Length, Split, Append
+from AdditionalFunction import  Split, Append
 from typing import List
 
 # FUNGSI LOGIN

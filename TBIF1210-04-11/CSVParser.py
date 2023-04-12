@@ -48,7 +48,7 @@ def CSVParser(file : str, columnName : str) -> List :
     indexColumnName = IndexColumnName(array[0], columnName)
     
     # Inisialisasi array baru dengan Mark
-    arrayColumnName = [None for i in range (100)]
+    arrayColumnName = [None for i in range (103)]
     MARK = "MARK"
     
     # Memasukkan isi dari kolom ke dalam array baru (arrayColumnName)

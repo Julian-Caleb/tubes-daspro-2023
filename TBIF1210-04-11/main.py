@@ -20,7 +20,7 @@
 # ALGORITMA
 # import function
 from CSVParser import CSVParser
-from AdditionalFunction import Length
+from AdditionalFunction import Length, LengthArray
 from TipeBentukan import CSVArray
 from F01_login import Login
 from F02_logout import Logout
@@ -32,9 +32,9 @@ seed = 69 # sebagai seed untuk algoritma lcg_rng
 
 # mengambil array yang dibutuhkan
 CSVfile = "user.csv"
-CSVUsername = CSVArray(CSVParser(CSVfile, "username"), Length(CSVParser(CSVfile, "username")))
-CSVPassword = CSVArray(CSVParser(CSVfile, "password"), Length(CSVParser(CSVfile, "password")))
-CSVRole = CSVArray(CSVParser(CSVfile, "role"), Length(CSVParser(CSVfile, "role")))
+CSVUsername = CSVArray(CSVParser(CSVfile, "username"), LengthArray(CSVParser(CSVfile, "username")))
+CSVPassword = CSVArray(CSVParser(CSVfile, "password"), LengthArray(CSVParser(CSVfile, "password")))
+CSVRole = CSVArray(CSVParser(CSVfile, "role"), LengthArray(CSVParser(CSVfile, "role")))
 
 # looping 
 while True :

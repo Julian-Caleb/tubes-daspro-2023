@@ -1,6 +1,38 @@
 # Import
 from typing import List
 
+#-----------------------------------------------------------------------------------#
+# FUNCTION LENGTHARRAY 
+# Fungsi LengthArray menerima sebuah array dan mengembalikan banyak elemen efektif dari indeks 0 hingga elemen sebelum MARK 
+#   I.S. Sebuah array yang mengandung MARK
+#   F.S. Banyak elemen efektif 
+
+# KAMUS LOKAL 
+# constant Nmax : int = 103
+# type arr: array [0..Nmax-1] of str
+# i, count : int
+
+# ALGORITMA 
+def LengthArray (arr: List) -> int :
+    
+    # inisialisasi variabel
+    i = 0
+    count = 0
+    
+    # mengecek mark
+    while (arr[i] != "MARK") :
+        
+        # apabila elemen tidak kosong
+        if (arr[i] != None) :
+        
+            # menambahkan jumlah elemen
+            count += 1
+        
+        i += 1
+            
+    return i
+#-----------------------------------------------------------------------------------#
+
 # FUNCTION LENGTH
 # Fungsi dibuat untuk menentukan banyak elemen efektif dalam suatu array
 
@@ -121,3 +153,128 @@ def CompareArrayOfString (arr : List, op : str) -> List :
         output = CompareString (output, arr[n], op)
         n += 1
     return output
+
+#-----------------------------------------------------------------------------------#
+
+# FUNCTION INDEXOF 
+# function IndexOf menerima input sebuah array of string dan sebuah keyword string, mencari pada index keberapa string tersebut berada pada array (membaca index pertama kali string tersebut muncul) dan mengembalikan index tersebut. Asumsi string pasti ditemukan (dikarenakan pemanggilan MemberOf sebelum IndexOf).
+#	I.S. sebuah array of string dan sebuah string
+#	F.S. integer index keberapa string tersebut (pertama kali) muncul pada array 
+
+# KAMUS LOKAL 
+# constant NMax : int = 103
+# arr : array [0..Nmax-1] of str
+# keyword : str
+# i : int
+
+# ALGORITMA
+def IndexOf (arr : List, keyword : str) -> int :
+
+    # inisialisasi iterasi 
+    i = 0
+		
+	# iterasi dilakukan hingga keyword ditemukan 
+    while (arr[i] != keyword) :
+        i += 1
+        
+    # arr[i] = keyword 
+    IX = i + 1
+    return i
+
+# APLIKASI
+# print(IndexOf(["a","b","c","d","e"], "d"))
+
+#-----------------------------------------------------------------------------------#
+
+# FUNCTION MEMBEROF 
+# function MemberOf menerima input sebuah array of string dan sebuah keyword string, mencari apakah string keyword berada pada array dan mengembalikan boolean, True jika ada dan False jika tidak. 
+#	I.S. sebuah array of string dan sebuah string
+#	F.S. boolean, True jika ditemukan, False jika tidak.
+
+# KAMUS LOKAL 
+# constant NMax : int = 103
+# arr : array [0..Nmax-1] of str
+# keyword : str
+# Found : bool
+# i : int 
+
+# ALGORITMA 
+def MemberOf (arr: List, keyword : str) -> bool :
+    
+    # inisialisasi iterasi
+    Nmax = 103
+    i = 0
+    Found = False
+    
+    # iterasi dilakukan hingga keyword ditemukan atau i = Nmax - 1
+    while (i < Nmax-1) and (arr[i] != keyword) :
+        i += 1
+        
+    # i = Nmax-1 or arr[i] == keyword 
+    if (arr[i] == keyword) :
+        Found = True
+    
+    return Found
+
+# APLIKASI
+# print(MemberOf(['bandung_bondowoso', 'roro_jonggrang', 'MARK', None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, 
+# None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None], "MARK"))
+
+#-----------------------------------------------------------------------------------#
+
+# FUNCTION FREQUENCY
+# Function Frequency menerima sebuah array of string dan keyword string dan mencari berapa kali kemunculan keyword tersebut dalam string.
+#   I.S. sebuah array of string dan sebuah string 
+#   F.S. integer banyak kemunculan string tersebut dalam array 
+
+# KAMUS LOKAL 
+# constant Nmax : int = 103
+# arr : array [0..Nmax-1] of str
+# keyword : str
+# i, count : int
+
+# ALGORITMA 
+def Frequency (arr : List, keyword : str) -> int :
+    
+    # inisialisasi iterasi
+    Nmax = 103
+    i = 0
+    count = 0
+    
+    # iterasi menghitung berapa kali ditemukan
+    while (i < Nmax) :
+        if (arr[i] == keyword) :
+            count += 1
+        i += 1
+    
+    return count
+
+# APLIKASI
+# print(Frequency(['bandung_bondowoso', 'roro_jonggrang', 'MARK', None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, 
+# None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None], None))
+
+#-----------------------------------------------------------------------------------#
+
+# FUNCTION DELETE 
+# Fungsi Delete menerima sebuah array dan integer index yang akan dihapus dan mengembalikan array. 
+#   I.S. array [0..Nmax-1] dan index yang valid, yaitu berada di antara [0..Nmax-1] 
+#   F.S. array yang sama namun dengan array[index] (berdasarkan parameter) tidak berisi / berisi None 
+
+# KAMUS LOKAL
+# constant Nmax : int = 103
+# type arr : array [0..Nmax-1] of str
+
+# ALGORITMA
+def Delete (arr : List, index : int) -> List :
+    
+    # membuat arr[index] menjadi None
+    arr[index] = None
+    
+    return arr
+
+# APLIKASI
+# print(Delete(['bandung_bondowoso', 'roro_jonggrang', 'MARK', None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, 
+#                  None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None], 1))
+
+
+
