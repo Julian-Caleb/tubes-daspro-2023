@@ -7,11 +7,11 @@ def HapusJin (role, CSVUsername, CSVPassword, CSVRole, CSVId, CSVPembuat, CSVPas
     
     # Jika ya, input nama jin ke dalam (usernameJin)
     else:
-        usernameJin = str(input(“Masukkan username jin : ”))
+        usernameJin = str(input("Masukkan username jin : "))
     
         # Jika (usernameJin) tidak terdaftar pada (CSVUsername)
         if usernameJin not in CSVUsername:
-            print(“Tidak ada jin dengan username tersebut.”)
+            print("Tidak ada jin dengan username tersebut.")
             
         # Jika (usernameJin) terdaftar pada (CSVUsername)
         else:
