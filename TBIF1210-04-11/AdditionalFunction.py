@@ -16,11 +16,12 @@ def Length (arr : List) -> int : # pengganti len()
     # return i
     return len(arr)
 
-def Length2 (arr : List) -> List :
-    count = 0
-    for i in arr:
-        count+=1
-    return count
+def Length2 (arr):
+    x = list(arr) + ['']
+    i = 0
+    while x[i] != '':
+        i+=1
+    return i
     
 # APLIKASI
 # print(Length(["a", "b", "c", "d", "MARK", None]))
