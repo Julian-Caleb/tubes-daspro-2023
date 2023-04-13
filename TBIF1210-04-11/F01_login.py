@@ -1,5 +1,6 @@
 # import function and variable
-from AdditionalFunction import  Split, Append
+from AdditionalFunction import Split, Append
+from TipeBentukan import CSVArray
 from typing import List
 
 # FUNGSI LOGIN
@@ -11,7 +12,7 @@ from typing import List
 #
 
 # ALGORTIMA
-def Login(username : str, password : str, role : str, isLoggedIn : bool, CSVUsername: List, CSVPassword: List, CSVRole: List) -> (str, str, str, bool):
+def Login(username : str, password : str, role : str, isLoggedIn : bool, CSVUsername: CSVArray, CSVPassword: CSVArray, CSVRole: CSVArray) -> (str, str, str, bool):
     
     # mengecek apakah login atau belum
     # jika sudah

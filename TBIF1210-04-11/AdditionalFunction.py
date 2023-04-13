@@ -20,7 +20,7 @@ def LengthArray (arr: List) -> int :
     count = 0
     
     # mengecek mark
-    while (arr[i] != "MARK") :
+    while (arr[i] != 'MARK') :
         
         # apabila elemen tidak kosong
         if (arr[i] != None) :
@@ -31,6 +31,10 @@ def LengthArray (arr: List) -> int :
         i += 1
             
     return i
+
+# APLIKASI
+# print(LengthArray(['Bondowoso', 'Roro', 'Lmao', 'MARK', None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]))
+
 #-----------------------------------------------------------------------------------#
 
 # FUNCTION LENGTH
