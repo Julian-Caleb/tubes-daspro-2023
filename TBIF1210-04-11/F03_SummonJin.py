@@ -48,7 +48,7 @@ def summonJin(y, username):
                 
                 
 # INI BUAT KALAU USERNAME SAMA, CUMAN BELUM JALAN. PAS DI RUN MASIH OUT OF INDEX (line 57)
-x = 3 # panjang list
+x = 3 # panjang list contoh
 a = [0 for i in range(x)]
 j = 0
 while(j < x): # loop input
