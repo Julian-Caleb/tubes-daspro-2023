@@ -1,4 +1,4 @@
-ddef loginJin(x):
+def loginJin(x):
     usernameJin = ["" for i in range(x)]
     passwordJin = ["" for i in range(x)]
     z = 0
