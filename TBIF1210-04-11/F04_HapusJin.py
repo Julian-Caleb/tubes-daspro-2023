@@ -10,6 +10,7 @@ from AdditionalFunction import MemberOf, IndexOf, Delete
 # KAMUS LOKAL 
 # constant Nmax : integer = 103
 # usernameJin : string
+# konfirmasi : char
 
 # type CSVArray : <arr : array [0..Nmax-1] of string,
 # 				Neff : integer >

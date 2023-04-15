@@ -1,7 +1,7 @@
 from CSVParser import CSVParser
 from typing import List
 from TipeBentukan import CSVArray
-from AdditionalFunction import MemberOf, IndexOf, Delete, Length, LengthArray, Append
+from AdditionalFunction import MemberOf, IndexOf, Delete, Length, LengthArray, AppendCSVArray, AmbilBahan
 from BonusFunction import Lcg_rng
 
 # FUNCTION BANGUN
@@ -11,7 +11,7 @@ from BonusFunction import Lcg_rng
 
 # KAMUS LOKAL
 
-# 	constant Nmax : integer = 103
+# constant Nmax : integer = 103
 
 # username, password, role : string
 # pasir, batu, air : integer 
@@ -24,8 +24,9 @@ from BonusFunction import Lcg_rng
 # CSVNama, CSVDeskripsi, CSVJumlah : CSVArray
 
 # function IndexOf (arr : array [0..Nmax-1] of string, keyword : string) -> integer
+# function MemberOf (arr : array [0..Nmax-1] of string, keyword : string) -> boolean
 # function AppendCSVArray (CSVArray : CSVArray, element : string) -> CSVArray
-# function lcg_rng () -> integer
+# function AmbilBahan (CSVNama : CSVArray, CSVJumlah : CSVArray, argumen : string) -> integer, integer, integer
 
 def Bangun (role : str, CSVUsername : CSVArray, CSVPassword : CSVArray, CSVRole : CSVArray, CSVId : CSVArray, CSVPembuat : CSVArray, CSVPasir : CSVArray, CSVBatu : CSVArray, CSVAir : CSVArray) -> (CSVArray, CSVArray, CSVArray, CSVArray, CSVArray, CSVArray, CSVArray, CSVArray) :
 
@@ -36,14 +37,11 @@ def Bangun (role : str, CSVUsername : CSVArray, CSVPassword : CSVArray, CSVRole 
     
     else:
         # Bahan yang dibutuhkan untuk membuat candi
-        pasir = Lcg_rng()
-        batu = Lcg_rng()
-        air = Lcg_rng()
+        (pasir, batu, air) = AmbilBahan (CSVNama, CSVJumlah, "random")
+       
 
         # Cek bahan yang dimiliki
-        banyakPasir = IndexOf(CSVPasir.arr, "pasir")
-        banyakBatu = IndexOf(CSVBatu.arr, "batu")
-        banyakAir = IndexOf(CSVAir.arr, "air")
+        (banyakPasir, banyakBatu, banyakAir) = AmbilBahan (CSVNama, CSVJumlah, "data")
 
         # Jika bahan tidak mencukupi
         if pasir > banyakPasir or batu > banyakBatu or air > banyakAir:
@@ -56,24 +54,24 @@ def Bangun (role : str, CSVUsername : CSVArray, CSVPassword : CSVArray, CSVRole 
             banyakAir = banyakAir - air
 
             # Masukkan kembali ke array
-            CSVPasir = banyakPasir
-            CSVBatu = banyakBatu
-            CSVAir = banyakAir
+            CSVJumlah.arr[IndexOf(CSVNama.arr, "pasir")] = str(banyakPasir)
+            CSVJumlah.arr[IndexOf(CSVNama.arr, "batu")] = str(banyakBatu)
+            CSVJumlah.arr[IndexOf(CSVNama.arr, "air")] = str(banyakAir)
 
             # Mencari id yang available antara 1 sampai 100
             i = 1
             while MemberOf(CSVId, i):
-                i = i +1
+                i = i + 1
             
             if i < 101:
                 # id
-                Append(CSVId, i)
+                AppendCSVArray(CSVId, i)
                 # Pembuat
-                Append(CSVPembuat, "username")
+                AppendCSVArray(CSVPembuat, "username")
                 # Bahan-bahan
-                Append(CSVPasir, pasir)
-                Append(CSVBatu, batu)
-                Append(CSVAir, air)
+                AppendCSVArray(CSVPasir, pasir)
+                AppendCSVArray(CSVBatu, batu)
+                AppendCSVArray(CSVAir, air)
 
                 print("Candi berhasil dibangun")
                 print(f"Sisa candi yang perlu dibangun: {100-i}")

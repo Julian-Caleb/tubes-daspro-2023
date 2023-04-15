@@ -53,7 +53,7 @@ def UbahJin (role : str, CSVUsername : CSVArray, CSVPassword : CSVArray, CSVRole
                 roleJinAkhir = "Pembangun"
                 roleJin = "jin_pembangun"
             # meminta konfirmasi
-            print(f"Jin ini bertipe {roleJinAwal}. Yakin ingin mengubah ke tipe {roleJinAkhir} (Y/N)?")
+            print(f"Jin ini bertipe {roleJinAwal}. Yakin ingin mengubah ke tipe {roleJinAkhir} (Y/N)?", end="")
             konfirmasi = str(input())
 
             if (konfirmasi == "Y"):

@@ -1,5 +1,6 @@
 # Import
 from typing import List
+from TipeBentukan import CSVArray
 
 #-----------------------------------------------------------------------------------#
 # FUNCTION LENGTHARRAY 
@@ -76,19 +77,69 @@ def Split (arr : List, spliter : str) -> List :
 
 #-----------------------------------------------------------------------------------#
 
-# FUNCTION APPEND
-#
+# FUNCTION APPEND 
+# Fungsi Append menerima sebuah array dan string, menambahkan string pada array dan menambahkan 1 pada array.
+#   I.S.
+#   F.S. 
 
-# KAMUS 
-#
+# KAMUS LOKAL 
+
+# constant Nmax : integer = 103
+# arr : array [0..Nmax-1] of string
+# i : integer
 
 # ALGORITMA
 def Append (arr : List, element : str) -> List :
-    return arr.append(element) # sementara
+
+    # inisialisasi variabel 
+    i <- 0
+
+    # elemen akan dimasukkan pada elemen yang kosong pada array (None) atau di paling belakang (menggeser array) dengan asumsi pasti ada “MARK” 
+
+    # iterasi hingga menemukan None atau “MARK” dengan skema search
+    while (arr[i] != None) or (arr[i] != "MARK") :
+        i <- i + 1 
+
+    # memasukkan dan menggeser
+    if (arr[i] == None) :
+        arr[i] = element
+    else : # arr[i] = “MARK” 
+        arr[i] = element
+        arr[i+1] = "MARK"
+    return arr
+
+#-----------------------------------------------------------------------------------#
 
 def Append2 (a, n) :
     z = a + n
     return z # sama gk nih? element nya tuh list bukan?
+
+#-----------------------------------------------------------------------------------#
+
+# FUNCTION APPENDCSVARRAY 
+# Fungsi AppendCSVArray menerima sebuah CSVarray dan string, menambahkan string pada CSVarray.arr dan menambahkan 1 pada CSVArray.Neff.
+#   I.S. 
+#   F.S. 
+
+# KAMUS LOKAL
+
+# constant Nmax : integer = 103
+
+# type CSVArray : <arr : array [0..Nmax-1] of string,
+# 				Neff : integer >
+
+# i : integer
+
+# ALGORITMA 
+def AppendCSVArray (CSVArray : CSVArray, element : str) -> CSVArray :
+
+    # melakukan append pada array 
+    Append(CSVArray.arr, element)
+
+    # menambahkan 1 elemen pada Neff 
+    CSVArray.Neff <- CSVArray.Neff + 1
+
+    return arr
 
 #-----------------------------------------------------------------------------------#
 
@@ -156,6 +207,7 @@ def CompareArrayOfString (arr : List, op : str) -> List :
     while n < Length(arr) :
         output = CompareString (output, arr[n], op)
         n += 1
+        
     return output
 
 #-----------------------------------------------------------------------------------#
@@ -280,5 +332,38 @@ def Delete (arr : List, index : int) -> List :
 # print(Delete(['bandung_bondowoso', 'roro_jonggrang', 'MARK', None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, 
 #                  None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None], 1))
 
+#-----------------------------------------------------------------------------------#
+
+# FUNCTION AMBILBAHAN 
+# Function AmbilBahan akan menerima 2 buah CSVArray dan 1 string yang menunjukkan apakah bahan yang diambil adalah untuk bangun/kumpul atau dari database 
+
+# KAMUS LOKAL 
+# constant Nmax : integer = 103
+
+# type CSVArray : <arr : array [0..Nmax-1] of string,
+# 				Neff : integer >
+
+# CSVNama, CSVJumlah : CSVArray
+# pasir, batu, air : integer
+# argumen : string
+
+# function lcg_rng () -> integer
+
+# ALGORITMA
+def AmbilBahan (CSVNama : CSVArray, CSVJumlah : CSVArray, argumen : str) -> (int, int, int) :
+
+    # jika minta bahan random
+    if (argumen == "random") : 
+        pasir = Lcg_rng()
+        batu = Lcg_rng()
+        air = Lcg_rng()
+
+    # jika mengecek bahan
+    else : # argumen = “data” 
+        pasir = int(CSVJumlah.arr[IndexOf(CSVNama.arr, "pasir")])
+        batu = int(CSVJumlah.arr[IndexOf(CSVNama.arr, "batu")])
+        air = int(CSVJumlah.arr[IndexOf(CSVNama.arr, "air")])
+
+    return (pasir, batu, air)
 
 

@@ -22,8 +22,8 @@
 from CSVParser import CSVParser
 from AdditionalFunction import Length, LengthArray
 from TipeBentukan import CSVArray
-from F01_login import Login
-from F02_logout import Logout
+from F01_Login import Login
+from F02_Logout import Logout
 from F04_HapusJin import HapusJin
 from F05_UbahJin import UbahJin
 from F06_Bangun import Bangun
@@ -69,14 +69,15 @@ while True :
     # F04 - Hapus Jin
     elif func == "hapusjin" :
         (CSVUsername, CSVPassword, CSVRole, CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir) = HapusJin(role, CSVUsername, CSVPassword, CSVRole, CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir)
-        # print(CSVId.arr)
-        # print(CSVUsername.arr)
+        print(CSVUsername.arr)
 
     # F05 - Ubah Jin
     elif func == "ubahjin" :
         (CSVUsername, CSVPassword, CSVRole, CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir) = UbahJin(role, CSVUsername, CSVPassword, CSVRole, CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir)
+        # print(CSVRole.arr)
 
     # F06 - Bangun Candi
     elif func == "bangun" :
         (CSVUsername, CSVPassword, CSVRole, CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir) = Bangun(role, CSVUsername, CSVPassword, CSVRole, CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir)
+        # print (CSVPembuat.arr) 
 

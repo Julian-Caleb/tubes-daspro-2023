@@ -43,20 +43,17 @@ def summonJin(y, username):
                 print(loginJin(y))
             else:
                 print("Tidak ada jenis jin bernomor", nomor, "!")
-
-
-                
                 
 # INI BUAT KALAU USERNAME SAMA, CUMAN BELUM JALAN. PAS DI RUN MASIH OUT OF INDEX (line 57)
-x = 3 # panjang list contoh
-a = [0 for i in range(x)]
-j = 0
-while(j < x): # loop input
-    a = str(input("Masukkan username jin: "))
-    for k in range (j-1):
-        if(a[j] == a[k]): # nilai input sekarang dibandingkan dengan nilai input sebelumnya, hingga index sebelum index input sekarang (-1)
-            print("sama")
-    j = j + 1
+# x = 3 # panjang list contoh
+# a = [0 for i in range(x)]
+# j = 0
+# while(j < x): # loop input
+#     a = str(input("Masukkan username jin: "))
+#     for k in range (j-1):
+#         if(a[j] == a[k]): # nilai input sekarang dibandingkan dengan nilai input sebelumnya, hingga index sebelum index input sekarang (-1)
+#             print("sama")
+#     j = j + 1
 
 
         

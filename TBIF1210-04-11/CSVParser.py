@@ -43,7 +43,7 @@ def CSVParser(file : str, columnName : str) -> List :
     while i < Length(array) :
         array[i] = Split(array[i], ";")
         i += 1
-        
+    
     # mencari index atribut column
     indexColumnName = IndexColumnName(array[0], columnName)
     
@@ -55,13 +55,15 @@ def CSVParser(file : str, columnName : str) -> List :
     # Memasukkan isi dari kolom ke dalam array baru (arrayColumnName)
     i = 1
     while i < Length(array) - 1 :
-        arrayColumnName[i], arrayColumnName[i-1] = MARK, array[i][indexColumnName]
-        i += 1
+        if array[i] != [''] :
+            arrayColumnName[i], arrayColumnName[i-1] = MARK, array[i][indexColumnName]
+            i += 1
+        else :
+            break
     
     return arrayColumnName
 
 # APLIKASI
-# print(CSVParser("user.csv", "role"))
+# print(CSVParser("candi.csv", "pasir"))
 
 #-----------------------------------------------------------------------------------#
-

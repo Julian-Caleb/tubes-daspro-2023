@@ -19,7 +19,7 @@ def Lcg_rng():
     
     seed = seed % m
     seed = (a * seed + c) % m
-    rand = seed % 5 + 1
+    rand = seed % 6
     return (int(rand))
 
 # APLIKASI 
@@ -27,6 +27,6 @@ pasir = Lcg_rng()
 batu = Lcg_rng()
 air = Lcg_rng()
 
-print(pasir, batu, air)
+# print(pasir, batu, air)
 
 
