@@ -1,7 +1,7 @@
 from CSVParser import CSVParser
 from typing import List
 from TipeBentukan import CSVArray
-from AdditionalFunction import MemberOf, IndexOf, Delete, Length, LengthArray, AppendCSVArray, AmbilBahan
+from AdditionalFunction import MemberOf, IndexOf, Delete, LengthArray, AppendCSVArray, AmbilBahan
 from BonusFunction import Lcg_rng
 
 # FUNCTION BANGUN

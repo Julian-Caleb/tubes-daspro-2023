@@ -38,30 +38,37 @@ def LengthArray (arr: List) -> int :
 
 #-----------------------------------------------------------------------------------#
 
-# FUNCTION LENGTH
-# Fungsi dibuat untuk menentukan banyak elemen efektif dalam suatu array
+# FUNCTION LENGTHSTRING
+# Fungsi LengthString menerima sebuah string dan mengembalikan jumlah huruf dalam string
+#   I.S. Sebuah string 
+#   F.S. Banyak huruf dalam string
 
-# KAMUS
-# arr : array of elements (integer atau char)
+# KAMUS LOKAL 
+# type str: string
+# i, count : integer
 
-# ALGORITMA
-def Length (arr : List) -> int : # pengganti len()
-    # Menggunakan "MARK" sebagai mark
-    # i = 0
-    # while arr[i] != "MARK" :
-    #     i += 1
-    # return i
-    return len(arr)
-
-def Length2 (arr):
-    x = list(arr) + ['']
-    i = 0
-    while x[i] != '':
-        i+=1
-    return i
+# ALGORITMA 
+def LengthString (string : str) -> int : 
+    return len(string)
     
 # APLIKASI
-# print(Length(["a", "b", "c", "d", "MARK", None]))
+# print(Length("Easter Egg"))
+
+#-----------------------------------------------------------------------------------#
+
+# FUNCTION LENGTHCSV
+# Fungsi LengthCSV menerima sebuah array (khusus pengolahan data dari csv) dan mengembalikan jumlah elemen dalam array 
+#     I.S. Sebuah array dari CSV
+#     F.S. Banyak elemen dalam array 
+
+# KAMUS LOKAL 
+# constant Nmax : integer = 10
+# type arr : array [0..Nmax] of string { berisi data raw dari CSV }
+# i, count : integer
+
+# ALGORITMA 
+def LengthCSV (arr : List) -> int : 
+    return len(arr)
 
 #-----------------------------------------------------------------------------------#
 
@@ -92,13 +99,13 @@ def Split (arr : List, spliter : str) -> List :
 def Append (arr : List, element : str) -> List :
 
     # inisialisasi variabel 
-    i <- 0
+    i = 0
 
     # elemen akan dimasukkan pada elemen yang kosong pada array (None) atau di paling belakang (menggeser array) dengan asumsi pasti ada “MARK” 
 
     # iterasi hingga menemukan None atau “MARK” dengan skema search
-    while (arr[i] != None) or (arr[i] != "MARK") :
-        i <- i + 1 
+    while (arr[i] != None) and (arr[i] != "MARK") :
+        i = i + 1 
 
     # memasukkan dan menggeser
     if (arr[i] == None) :
@@ -139,7 +146,7 @@ def AppendCSVArray (CSVArray : CSVArray, element : str) -> CSVArray :
     # menambahkan 1 elemen pada Neff 
     CSVArray.Neff <- CSVArray.Neff + 1
 
-    return arr
+    return CSVArray
 
 #-----------------------------------------------------------------------------------#
 
@@ -204,7 +211,7 @@ def CompareString (stringOne : str, stringTwo : str, op : str) -> str :
 def CompareArrayOfString (arr : List, op : str) -> List :
     output = arr[0]
     n = 1
-    while n < Length(arr) :
+    while n < LengthArray(arr) :
         output = CompareString (output, arr[n], op)
         n += 1
         

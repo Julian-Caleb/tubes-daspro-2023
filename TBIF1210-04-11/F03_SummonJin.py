@@ -1,59 +1,86 @@
-def loginJin(x):
-    usernameJin = ["" for i in range(x)]
-    passwordJin = ["" for i in range(x)]
-    z = 0
-    while(z < x):
-        usernameJin = str(input("Masukkan username jin: "))
-        passwordJin = str(input("Masukkan password jin: "))
-        if(usernameJin[z] == ""): # belum lengkap buat condition username jin sama
-            print("Username", usernameJin, "sudah diambil!")
-        else:
-            if(len(passwordJin) < 5 or len(passwordJin) > 25): # ketentuan password
-                print("Password panjangnya harus 5-25 karakter!")
-            else:
-                z = z + 1 # lanjut ke input selanjutnya kalau password udah bener
-                print("Mengumpulkan sesajen…")
-                print("Menyerahkan sesajen…")
-                print("Membacakan ")
-                print("Jin", usernameJin, "berhasil dipanggil!")
+# import
+from TipeBentukan import CSVArray
+from typing import List
+from AdditionalFunction import Frequency, MemberOf, AppendCSVArray
 
-    for i in range (x): # buat nyetak list (gk termasuk ke spek, cmn buat liat aja kalau username & password bener jadi list)
-        print(usernameJin, passwordJin)
+# { FUNCTION SUMMONJIN }
+# { Function SummonJin, yang hanya dapat diakses oleh Bandung Bondowoso, melakukan pembuatan jin apabila jumlah jin dibawah 100, dan mengembalikan pesan apabila jin sudah 100
+# 	I.S. array username, password, dan role sembarang, dan role bandung_bondowoso untuk memastikan apakah mendapat akses atau tidak
+# 	F.S array username, password, dan role yang sudah ditambah dengan jin yang baru dibuat apabila semua ketentuan terpenuhi }
 
-def summonJin(y, username):
-    Nmax = 103
-    if(username != "bandung_bondowoso"):
-        print("") # pesan kalau bukan bandung_bondowoso apa?
-    else:
-        if(y == Nmax): # kalau jin udh maksimal?
+# { KAMUS LOKAL }
+# constant Nmax : integer = 103
+
+# role : string
+
+# nomor : integer [1..2]
+# usernameJin, passwordJin, roleJin : string
+
+# type CSVArray : <arr : array [0..Nmax-1] of string,
+# 				Neff : integer >
+# CSVUsername : CSVArray
+# CSVPassword : CSVArray
+# CSVRole : CSVArray
+
+# function Frequency (arr : array [0..Nmax-1] of string, keyword : string) -> integer
+# function MemberOf (arr : array [0..Nmax-1] of string, keyword : string) -> boolean
+# function LengthString (str : string) -> integer
+# function AppendCSVArray (CSVArray : CSVArray, element : string) -> CSVArray
+
+# ALGORITMA
+def SummonJin (role : str, CSVUsername: CSVArray, CSVPassword: CSVArray, CSVRole: CSVArray) -> (CSVArray, CSVArray, CSVArray) :
+
+    if(role != "bandung_bondowoso"):
+        return (CSVUsername, CSVPassword ,CSVRole)
+    
+    else: # role == "bandung_bondowoso"
+        if (Frequency (CSVRole.arr, "jin_pengumpul") + Frequency(CSVRole.arr, "jin_pembangun")) == 100 :
             print("Jumlah Jin telah maksimal! (100 jin). Bandung tidak dapat men-summon lebih dari itu")
-        else:
+            return (CSVUsername, CSVPassword ,CSVRole)
+        
+        else: # role : "bandung_bondowoso"
             print("Jenis jin yang dapat dipanggil:")
             print("(1) Pengumpul - Bertugas mengumpulkan bahan bangunan")
-            print("(2) Pembangun - Bertugas membangun candi")
-        for i in range(y):
+            print("(2) Pembangun - Bertugas membangun candi\n")
+            
+        while True :
             nomor = int(input("Masukkan nomor jenis jin yang ingin dipanggil: "))
-            if(nomor == 1):
-                print("Memilih jin “Pengumpul”.")
-                roleJin = "jin_pengumpul"
-                print(loginJin(y))
-            elif(nomor == 2):
-                print("Memilih jin “Pembangun”.")
-                roleJin = "jin_pembangun"
-                print(loginJin(y))
-            else:
+            if (nomor != 1) and (nomor != 2) :
                 print("Tidak ada jenis jin bernomor", nomor, "!")
-                
-# INI BUAT KALAU USERNAME SAMA, CUMAN BELUM JALAN. PAS DI RUN MASIH OUT OF INDEX (line 57)
-# x = 3 # panjang list contoh
-# a = [0 for i in range(x)]
-# j = 0
-# while(j < x): # loop input
-#     a = str(input("Masukkan username jin: "))
-#     for k in range (j-1):
-#         if(a[j] == a[k]): # nilai input sekarang dibandingkan dengan nilai input sebelumnya, hingga index sebelum index input sekarang (-1)
-#             print("sama")
-#     j = j + 1
+            else :
+                break
+        
+        if (nomor == 1):
+            print("\nMemilih jin “Pengumpul”.\n")
+            roleJin = "jin_pengumpul"
+        elif (nomor == 2):
+            print("\nMemilih jin “Pembangun”.\n")
+            roleJin = "jin_pembangun"
+        
+        while True :
+            usernameJin = input("Masukkan username jin: ")
+            if MemberOf(CSVUsername.arr, usernameJin) :
+                print("Username", usernameJin, "sudah diambil!")
+            else : 
+                break
+        
+        while True :
+            passwordJin = input("Masukkan password jin: ")
+            if len(passwordJin) < 5 or len(passwordJin) > 25 :
+                print("Password panjangnya harus 5-25 karakter!")
+            else : 
+                break
 
+        print("Mengumpulkan sesajen...")
+        print("Menyerahkan sesajen...")
+        print("Membacakan mantra...")
+        print("Jin", usernameJin, "berhasil dipanggil!")
 
+        # print(CSVUsername.arr)
+        # Memasukkan data ke dalam array 
+        AppendCSVArray(CSVUsername, usernameJin)
+        AppendCSVArray(CSVPassword, passwordJin)
+        AppendCSVArray(CSVRole, roleJin)
+
+        return (CSVUsername, CSVPassword, CSVRole)
         

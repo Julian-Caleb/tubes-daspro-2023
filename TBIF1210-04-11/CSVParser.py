@@ -1,5 +1,5 @@
 # Import
-from AdditionalFunction import Split, Length
+from AdditionalFunction import Split, LengthCSV
 from typing import List
 
 # FUNCTION INDEXCOLUMNNAME
@@ -14,7 +14,7 @@ def IndexColumnName (arr : List, X : str) :
     
     # inisialisasi index string yang dicari
     i = 0
-    while i < Length(arr) and arr[i] != X :
+    while i < LengthCSV(arr) and arr[i] != X :
         i += 1
     
     return i
@@ -40,7 +40,7 @@ def CSVParser(file : str, columnName : str) -> List :
     
     # menghilangkan ; dari array, mengubahnya menjadi matrix
     i = 0
-    while i < Length(array) :
+    while i < LengthCSV(array) :
         array[i] = Split(array[i], ";")
         i += 1
     
@@ -54,7 +54,7 @@ def CSVParser(file : str, columnName : str) -> List :
     
     # Memasukkan isi dari kolom ke dalam array baru (arrayColumnName)
     i = 1
-    while i < Length(array) - 1 :
+    while i < LengthCSV(array) - 1 :
         if array[i] != [''] :
             arrayColumnName[i], arrayColumnName[i-1] = MARK, array[i][indexColumnName]
             i += 1

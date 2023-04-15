@@ -20,10 +20,11 @@
 # ALGORITMA
 # import function
 from CSVParser import CSVParser
-from AdditionalFunction import Length, LengthArray
+from AdditionalFunction import LengthArray
 from TipeBentukan import CSVArray
 from F01_Login import Login
 from F02_Logout import Logout
+from F03_SummonJin import SummonJin
 from F04_HapusJin import HapusJin
 from F05_UbahJin import UbahJin
 from F06_Bangun import Bangun
@@ -65,11 +66,14 @@ while True :
         # print (username, password, role, isLoggedIn)
         
     # F03 - Summon Jin
+    elif func == "summonjin" :
+        (CSVUsername, CSVPassword, CSVRole) = SummonJin(role, CSVUsername, CSVPassword, CSVRole) 
+        # print(CSVUsername.arr)
     
     # F04 - Hapus Jin
     elif func == "hapusjin" :
         (CSVUsername, CSVPassword, CSVRole, CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir) = HapusJin(role, CSVUsername, CSVPassword, CSVRole, CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir)
-        print(CSVUsername.arr)
+        # print(CSVUsername.arr)
 
     # F05 - Ubah Jin
     elif func == "ubahjin" :

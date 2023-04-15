@@ -1,5 +1,4 @@
 from CSVParser import CSVParser
-from AdditionalFunction import Length, LengthArray
 from TipeBentukan import CSVArray
 from typing import List
 from TipeBentukan import CSVArray
