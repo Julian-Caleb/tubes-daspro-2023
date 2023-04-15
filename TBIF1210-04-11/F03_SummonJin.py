@@ -1,3 +1,23 @@
+# FUNCTION SUMMONJIN
+# Function SummonJin, yang hanya dapat diakses oleh Bandung Bondowoso, melakukan pembuatan jin apabila jumlah jin dibawah 100, dan mengembalikan pesan apabila jin sudah 100
+#   I.S. array username, password, dan role sembarang, dan role bandung_bondowoso untuk memastikan apakah mendapat akses atau tidak
+#   F.S array username, password, dan role yang sudah ditambah dengan jin yang baru dibuat apabila semua ketentuan terpenuhi }
+
+# KAMUS LOKAL
+# constant Nmax : integer = 103
+# role : string
+# nomor : integer [1..2]
+# usernameJin, passwordJin, roleJin : string
+
+# type CSVArray : <arr : array [0..Nmax-1] of string,
+#				Neff : integer >
+# CSVUsername : CSVArray
+# CSVPassword : CSVArray
+# CSVRole : CSVArray
+# function Frequency (arr : array [0..Nmax-1] of string, keyword : string) -> integer
+# function MemberOf (arr : array [0..Nmax-1] of string, keyword : string) -> boolean
+# function LengthString (str : string) -> integer
+
 def loginJin(x):
     usernameJin = ["" for i in range(x)]
     passwordJin = ["" for i in range(x)]
