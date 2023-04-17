@@ -28,17 +28,19 @@ from BonusFunction import Lcg_rng
 # function AppendCSVArray (CSVArray : CSVArray, element : string) -> CSVArray
 # function AmbilBahan (CSVNama : CSVArray, CSVJumlah : CSVArray, argumen : string) -> integer, integer, integer
 
-def Bangun (role : str, CSVUsername : CSVArray, CSVPassword : CSVArray, CSVRole : CSVArray, CSVId : CSVArray, CSVPembuat : CSVArray, CSVPasir : CSVArray, CSVBatu : CSVArray, CSVAir : CSVArray) -> (CSVArray, CSVArray, CSVArray, CSVArray, CSVArray, CSVArray, CSVArray, CSVArray) :
+def Bangun (username : str, role : str, CSVId : CSVArray, CSVPembuat : CSVArray, CSVPasir : CSVArray, CSVBatu : CSVArray, CSVAir : CSVArray, CSVNama : CSVArray, CSVJumlah : CSVArray) -> (CSVArray, CSVArray, CSVArray, CSVArray, CSVArray, CSVArray, CSVArray) :
 
     # Mengecek apakah (role) diisi dengan "jin_pembangun"
     # Jika tidak
     if role != "jin_pembangun":
-        return (CSVUsername, CSVPassword, CSVRole, CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir)
+        return ( CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir, CSVNama, CSVJumlah)
     
     else:
         # Bahan yang dibutuhkan untuk membuat candi
         (pasir, batu, air) = AmbilBahan (CSVNama, CSVJumlah, "random")
-       
+        # pastikan tidak ada yang 0
+        while pasir == 0 or batu == 0 or air == 0 :
+            (pasir, batu, air) = AmbilBahan (CSVNama, CSVJumlah, "random")        
 
         # Cek bahan yang dimiliki
         (banyakPasir, banyakBatu, banyakAir) = AmbilBahan (CSVNama, CSVJumlah, "data")
@@ -60,14 +62,14 @@ def Bangun (role : str, CSVUsername : CSVArray, CSVPassword : CSVArray, CSVRole 
 
             # Mencari id yang available antara 1 sampai 100
             i = 1
-            while MemberOf(CSVId, i):
+            while MemberOf(CSVId.arr, i):
                 i = i + 1
             
-            if i < 101:
+            if i < 100:
                 # id
                 AppendCSVArray(CSVId, i)
                 # Pembuat
-                AppendCSVArray(CSVPembuat, "username")
+                AppendCSVArray(CSVPembuat, username)
                 # Bahan-bahan
                 AppendCSVArray(CSVPasir, pasir)
                 AppendCSVArray(CSVBatu, batu)
@@ -79,7 +81,7 @@ def Bangun (role : str, CSVUsername : CSVArray, CSVPassword : CSVArray, CSVRole 
                 print("Candi berhasil dibangun")
                 print(f"Sisa candi yang perlu dibangun: 0")
     
-        return (CSVUsername, CSVPassword, CSVRole, CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir)
+        return ( CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir, CSVNama, CSVJumlah)
 
 
 

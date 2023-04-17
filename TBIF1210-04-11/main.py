@@ -28,7 +28,9 @@ from F03_SummonJin import SummonJin
 from F04_HapusJin import HapusJin
 from F05_UbahJin import UbahJin
 from F06_Bangun import Bangun
+from F07_Kumpul import Kumpul
 from F11_HancurkanCandi import HancurkanCandi
+from F15_Help import Help
 
 # main program
 # inisialisasi variable
@@ -83,10 +85,21 @@ while True :
 
     # F06 - Bangun Candi
     elif func == "bangun" :
-        (CSVUsername, CSVPassword, CSVRole, CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir) = Bangun(role, CSVUsername, CSVPassword, CSVRole, CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir)
-        # print (CSVPembuat.arr) 
+        (CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir, CSVNama, sCSVJumlah) = Bangun(username, role, CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir, CSVNama, CSVJumlah)
+        print (CSVPembuat.arr) 
+    
+    # F07 - Kumpul Candi
+    elif func == "kumpul" :
+        CSVJumlah = Kumpul (role, CSVNama, CSVJumlah)
+        print (CSVJumlah.arr) 
     
     # F11 - Hancurkan Candi
     elif func == "hancurkancandi" :
-        HancurkanCandi(role, CSVId, CSVUsername, CSVPasir, CSVBatu, CSVAir, CSVNama, CSVJumlah)
+        (CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir) = HancurkanCandi(role, CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir, CSVNama, CSVJumlah)
+        print(CSVUsername.arr)
+        print(CSVId.arr)
+    
+    # F15 - Help
+    elif func == "help" :
+        Help (role)
 

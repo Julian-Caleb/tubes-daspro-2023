@@ -1,3 +1,6 @@
+from TipeBentukan import CSVArray
+from AdditionalFunction import AmbilBahan, IndexOf
+
 # FUNCTION KUMPUL
 # Function Kumpul, yang hanya bisa dilakukan oleh jin dengan role jin_pengumpul, bertugas untuk mengumpulkan bahan-bahan bangunan yaitu pasir, batu, dan air, dengan menggunakan randomizer yang menghasilkan bahan dari 0-5
 #   I.S. 1 string untuk validasi dan 2 buah CSVArray
@@ -20,8 +23,8 @@ def Kumpul (role : str, CSVNama : CSVArray, CSVJumlah : CSVArray) -> (CSVArray):
    
     # Mengecek apakah (role) diisi dengan "jin_pembangun"
     # Jika tidak
-    if role != "jin_pembangun":
-        return (CSVNama, CSVJumlah)
+    if role != "jin_pengumpul":
+        return CSVJumlah
     
     # Jika ya, randomize bahan bangunan yang dibutuhkan oleh candi
     else:

@@ -1,7 +1,7 @@
 from CSVParser import CSVParser
 from typing import List
 from TipeBentukan import CSVArray
-from AdditionalFunction import MemberOf, IndexOf, Delete, LengthArray, AppendCSVArray, AmbilBahan
+from AdditionalFunction import MemberOf, IndexOf, Delete, LengthArray, AppendCSVArray, DeleteCSVArray, AmbilBahan
 from BonusFunction import Lcg_rng
 
 # FUNCTION HANCURKANCANDI
@@ -29,7 +29,7 @@ def HancurkanCandi(role : str, CSVId : CSVArray, CSVPembuat : CSVArray, CSVPasir
     # Mengecek apakah (role) diisi dengan "roro_jonggrang"
     # Jika tidak
     if role != "roro_jonggrang":
-        return (CSVPembuat, CSVPasir, CSVBatu, CSVAir)
+        return (CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir)
     
     else:
         # Input id candi
@@ -41,11 +41,11 @@ def HancurkanCandi(role : str, CSVId : CSVArray, CSVPembuat : CSVArray, CSVPasir
             indexHancur = IndexOf(CSVId.arr, idHancur)
 
             # Menghancurkan candi
-            Delete(CSVId, indexHancur)
-            Delete(CSVPembuat, indexHancur)
-            Delete(CSVPasir, indexHancur)
-            Delete(CSVBatu, indexHancur)
-            Delete(CSVAir, indexHancur)
+            DeleteCSVArray(CSVId, indexHancur)
+            DeleteCSVArray(CSVPembuat, indexHancur)
+            DeleteCSVArray(CSVPasir, indexHancur)
+            DeleteCSVArray(CSVBatu, indexHancur)
+            DeleteCSVArray(CSVAir, indexHancur)
 
             print("Candi telah berhasil dihancurkan.")
         

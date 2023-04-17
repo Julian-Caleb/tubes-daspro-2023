@@ -1,6 +1,7 @@
 # Import
 from typing import List
 from TipeBentukan import CSVArray
+from BonusFunction import Lcg_rng
 
 #-----------------------------------------------------------------------------------#
 # FUNCTION LENGTHARRAY 
@@ -208,7 +209,7 @@ def CompareString (stringOne : str, stringTwo : str, op : str) -> str :
 # 
 
 # ALGORITMA
-def CompareArrayOfString (arr : List, op : str) -> List :
+def CompareArrayOfString (arr : List, op : str) -> str :
     output = arr[0]
     n = 1
     while n < LengthArray(arr) :
@@ -339,6 +340,31 @@ def Delete (arr : List, index : int) -> List :
 # print(Delete(['bandung_bondowoso', 'roro_jonggrang', 'MARK', None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, 
 #                  None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None], 1))
 
+#-----------------------------------------------------------------------------------#
+
+# FUNCTION DELETECSVARRAY 
+# Fungsi DeleteCSVArray menerima sebuah CSVArray index yang akan dihapus dan mengembalikan CSVArray. 
+#   I.S. CSVArray dan index yang valid, yaitu berada di antara [0..Nmax-1] 
+#   F.S. CSVArray yang sama namun dengan CSVArray[index] (berdasarkan parameter) tidak berisi / berisi None 
+
+# KAMUS LOKAL 
+# 	constant Nmax : integer = 103
+
+# type CSVArray : <arr : array [0..Nmax-1] of string,
+# 				Neff : integer >
+
+# function Delete (arr : arr, index : integer) -> arr
+
+# ALGORITMA 
+def DeleteCSVArray (CSVArray : CSVArray, index : int) -> CSVArray :
+    
+    # membuat CSVArray[index] menjadi None 
+    CSVArray.arr = Delete (CSVArray.arr, index)
+
+    # mengurangi jumlah elemen efektif 
+    CSVArray.Neff = CSVArray.Neff - 1
+    
+    return CSVArray
 #-----------------------------------------------------------------------------------#
 
 # FUNCTION AMBILBAHAN 

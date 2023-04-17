@@ -13,7 +13,7 @@
 # i : integer
 
 # { ALGORITMA }
-def Help (input role : string):
+def Help (role : str):
 	
     # { inisialisasi funcArray }
     funcNoRole = [1,15,16,9999,9999,9999,9999,9999,9999,9999,9999,9999,9999,9999,9999,9999]
@@ -36,59 +36,64 @@ def Help (input role : string):
 
     # { iterasi untuk menampilkan help }
     i = 0
+    
+    # tampilkan pesan awal
+    print("=========== HELP ===========")
 
     while(funcHelp[i] != 9999):
         # { menampilkan help berdasarkan funcarray }
         if(funcHelp[i] == 1): 
-            print(i+1, ". login")
-            print(" Untuk masuk menggunakan akun")
+            print(f"{i+1}. login")
+            print("   Untuk masuk menggunakan akun")
         elif(funcHelp[i]== 2): 
-            print(i+1, ". logout")
-            print(" Untuk keluar dari akun yang digunakan sekarang")
+            print(f"{i+1}. logout")
+            print("   Untuk keluar dari akun yang digunakan sekarang")
         elif(funcHelp[i] == 3): 
-            print(i+1, ". summonjin")
-            print("	Untuk memanggil jin baru baik jin pembangun maupun jin pengumpul")
+            print(f"{i+1}. summonjin")
+            print("   Untuk memanggil jin baru baik jin pembangun maupun jin pengumpul")
         elif(funcHelp[i] == 4):
-            print(i+1, ". hapusjin")
-            print("    Untuk menghapus jin yang terdaftar")
+            print(f"{i+1}. hapusjin")
+            print("   Untuk menghapus jin yang terdaftar")
         elif(funcHelp[i] == 5): 
-            print(i+1, “. ubahjin”)
-            print("	Untuk mengubah tipe jin (jin pembangun atau jin pengumpul)")
+            print(f"{i+1}. ubahjin")
+            print("   Untuk mengubah tipe jin (jin pembangun atau jin pengumpul)")
         elif(funcHelp[i] == 6):
-            print(i+1, ". bangun")
-            print("	Untuk membangun candi")
+            print(f"{i+1}. bangun")
+            print("   Untuk membangun candi")
         elif(funcHelp[i] == 7):
-            print(i+1, ". kumpul")
-            print("	Untuk mengumpulkan bahan-bahan")
+            print(f"{i+1}. kumpul")
+            print("   Untuk mengumpulkan bahan-bahan")
         elif(funcHelp[i] == 8.1):
-            print(i+1, “. batchkumpul”)
-            print("	Untuk membuat seluruh jin pengumpul mengumpulkan bahan-bahan")
+            print(f"{i+1}. batchkumpul")
+            print("   Untuk membuat seluruh jin pengumpul mengumpulkan bahan-bahan")
         elif(funcHelp[i] == 8.2):
-            print(i+1, ". batchbangun")
-            print("	Untuk membuat seluruh jin pembangun membangun candi")
+            print(f"{i+1}. batchbangun")
+            print("   Untuk membuat seluruh jin pembangun membangun candi")
         elif(funcHelp[i] == 9):
-            print(i+1, “. laporanjin”)
-            print("	Untuk mendapatkan informasi terkait jin yang terdaftar")
+            print(f"{i+1}. laporanjin")
+            print("   Untuk mendapatkan informasi terkait jin yang terdaftar")
         elif(funcHelp[i] == 10):
-            print(i+1, ". laporancandi")
-            print("	Untuk mendapatkan informasi terkait candi yang telah dibangun")
+            print(f"{i+1}. laporancandi")
+            print("   Untuk mendapatkan informasi terkait candi yang telah dibangun")
         elif(funcHelp[i] == 11):
-            print(i+1, ". hancurkancandi")
-            print("	Untuk menghancurkan candi yang ada")
+            print(f"{i+1}. hancurkancandi")
+            print("   Untuk menghancurkan candi yang ada")
         elif(funcHelp[i] == 12):
-            print(i+1, ". ayamberkokok")
-            print("	Untuk menyelesaikan permainan dan menentukan pemenang")
+            print(f"{i+1}. ayamberkokok")
+            print("   Untuk menyelesaikan permainan dan menentukan pemenang")
         elif(funcHelp[i] == 13): # { tidak akan digunakan }
-            print(i+1, “. load”)
-            print("	Untuk mengambil data tersimpan")
+            print(f"{i+1}. load")
+            print("   Untuk mengambil data tersimpan")
         elif(funcHelp[i] == 14):
-            print(i+1, “. save”)
-            print("	Untuk menyimpan data")
+            print(f"{i+1}. save")
+            print("   Untuk menyimpan data")
         elif(funcHelp[i] == 15):
-            print(i+1, ". help")
-            print("	Untuk menampilkan fungsi-fungsi apa saja yang dapat digunakan")
+            print(f"{i+1}. help")
+            print("   Untuk menampilkan fungsi-fungsi apa saja yang dapat digunakan")
         else: # { funcHelp[i] = 16 }
-           print(i+1, ". exit")
-            print("	Untuk keluar dari program dan kembali ke terminal")
+            print(f"{i+1}. exit")
+            print("   Untuk keluar dari program dan kembali ke terminal")
+           
+        i += 1
 
-{ funcHelp[i] = 9999 }
+# funcHelp[i] = 9999 
