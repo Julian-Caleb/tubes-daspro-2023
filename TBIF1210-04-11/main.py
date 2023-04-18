@@ -32,9 +32,11 @@ from F06_Bangun import Bangun
 from F07_Kumpul import Kumpul
 from F08_Batch import BatchBangun, BatchKumpul
 from F11_HancurkanCandi import HancurkanCandi
+from F12_AyamBerkokok import AyamBerkokok
 from F13_Load import Load
 from F14_Save import Save
 from F15_Help import Help
+from F16_Exit import Exit
 
 # main program
 # F13 - Load
@@ -110,6 +112,10 @@ while True :
         # print(CSVUsername.arr)
         # print(CSVId.arr)
     
+    # F12 - Ayam Berkokok
+    elif func == "ayamberkokok" :
+        (CSVId) = AyamBerkokok(CSVId)
+
     # F14 - Save
     elif func == "save" :
         Save (CSVUsername, CSVPassword, CSVRole, CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir, CSVNama, CSVDeskripsi, CSVJumlah) 
@@ -117,3 +123,7 @@ while True :
     # F15 - Help
     elif func == "help" :
         Help (role)
+
+    # F16 - Exit
+    elif func == "exit" :
+        Exit (CSVUsername, CSVPassword, CSVRole, CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir, CSVNama, CSVDeskripsi, CSVJumlah)
