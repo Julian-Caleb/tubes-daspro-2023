@@ -145,7 +145,7 @@ def AppendCSVArray (CSVArray : CSVArray, element : str) -> CSVArray :
     Append(CSVArray.arr, element)
 
     # menambahkan 1 elemen pada Neff 
-    CSVArray.Neff <- CSVArray.Neff + 1
+    CSVArray.Neff = CSVArray.Neff + 1
 
     return CSVArray
 
@@ -309,6 +309,7 @@ def Frequency (arr : List, keyword : str) -> int :
     while (i < Nmax) :
         if (arr[i] == keyword) :
             count += 1
+            # print(count)
         i += 1
     
     return count
@@ -365,6 +366,7 @@ def DeleteCSVArray (CSVArray : CSVArray, index : int) -> CSVArray :
     CSVArray.Neff = CSVArray.Neff - 1
     
     return CSVArray
+
 #-----------------------------------------------------------------------------------#
 
 # FUNCTION AMBILBAHAN 
@@ -398,5 +400,40 @@ def AmbilBahan (CSVNama : CSVArray, CSVJumlah : CSVArray, argumen : str) -> (int
         air = int(CSVJumlah.arr[IndexOf(CSVNama.arr, "air")])
 
     return (pasir, batu, air)
+
+#-----------------------------------------------------------------------------------#
+
+# FUNCTION SUMCSVARRAY 
+# Function CSVArray menerima sebuah CSVArray dan menghitung jumlah total angka dalam array dengan mengubahnya dulu menjadi integer 
+#   I.S. sebuah CSVArray
+#   F.S. integer 
+
+# KAMUS LOKAL 
+# constant Nmax : integer = 103
+
+# type CSVArray : <arr : array [0..Nmax-1] of string,
+# 				Neff : integer >
+
+# CSVArray : CSVArray
+# i, total : integer
+
+# ALGORITMA 
+def SumCSVArray ( CSVArray : CSVArray ) -> int :
+
+    # inisialisasi integer 
+    total = 0
+
+    # iterasi 
+    i = 0
+
+    while (CSVArray.arr[i] != "MARK") :
+        if (CSVArray.arr[i] != None) :
+            total = total + int(CSVArray.arr[i])
+            
+        i += 1
+
+    # CSVArray[i] = "MARK"
+
+    return total
 
 

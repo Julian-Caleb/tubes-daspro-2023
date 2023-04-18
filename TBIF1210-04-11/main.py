@@ -29,7 +29,7 @@ from F04_HapusJin import HapusJin
 from F05_UbahJin import UbahJin
 from F06_Bangun import Bangun
 from F07_Kumpul import Kumpul
-from F08_Batch import BatchKumpul
+from F08_Batch import BatchBangun, BatchKumpul
 from F11_HancurkanCandi import HancurkanCandi
 from F15_Help import Help
 
@@ -96,10 +96,16 @@ while True :
     
     # F08 - Batch 
     # Batch kumpul
+    elif func == "batchbangun" :
+        (CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir, CSVJumlah) = BatchBangun (role, CSVUsername, CSVRole, CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir,  CSVNama, CSVJumlah)
+        print(CSVJumlah.arr)
+        print(CSVId.arr)
+        
+    # Batch kumpul
     elif func == "batchkumpul" :
         CSVJumlah = BatchKumpul (role, CSVRole, CSVNama, CSVJumlah)
         print(CSVJumlah.arr)
-    
+        
     # F11 - Hancurkan Candi
     elif func == "hancurkancandi" :
         (CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir) = HancurkanCandi(role, CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir, CSVNama, CSVJumlah)
