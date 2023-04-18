@@ -111,6 +111,7 @@ def Append (arr : List, element : str) -> List :
     # memasukkan dan menggeser
     if (arr[i] == None) :
         arr[i] = element
+        
     else : # arr[i] = “MARK” 
         arr[i] = element
         arr[i+1] = "MARK"

@@ -19,6 +19,7 @@
 
 # ALGORITMA
 # import function
+import argparse
 from CSVParser import CSVParser
 from AdditionalFunction import LengthArray
 from TipeBentukan import CSVArray
@@ -31,29 +32,25 @@ from F06_Bangun import Bangun
 from F07_Kumpul import Kumpul
 from F08_Batch import BatchBangun, BatchKumpul
 from F11_HancurkanCandi import HancurkanCandi
+from F13_Load import Load
 from F15_Help import Help
 
 # main program
+# F13 - Load
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('folderName', type=str, nargs='?')
+    args = parser.parse_args()
+
+    if not args.folderName:
+        print("Tidak ada nama folder yang diberikan!\n")
+        print("Usage: python main.py <nama_folder>")
+        exit()
+    else:
+        (CSVUsername, CSVPassword, CSVRole, CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir, CSVNama, CSVDeskripsi, CSVJumlah) = Load(args.folderName)
+
 # inisialisasi variable
 (username, password, role, isLoggedIn) = ("", "", "", False)
-
-# mengambil array yang dibutuhkan
-CSVfile = "user.csv"
-CSVUsername = CSVArray(CSVParser(CSVfile, "username"), LengthArray(CSVParser(CSVfile, "username")))
-CSVPassword = CSVArray(CSVParser(CSVfile, "password"), LengthArray(CSVParser(CSVfile, "password")))
-CSVRole = CSVArray(CSVParser(CSVfile, "role"), LengthArray(CSVParser(CSVfile, "role")))
-
-CSVfile = "candi.csv"
-CSVId =  CSVArray(CSVParser(CSVfile, "id"), LengthArray(CSVParser(CSVfile, "id")))
-CSVPembuat = CSVArray(CSVParser(CSVfile, "pembuat"), LengthArray(CSVParser(CSVfile, "pembuat")))
-CSVPasir = CSVArray(CSVParser(CSVfile, "pasir"), LengthArray(CSVParser(CSVfile, "pasir")))
-CSVBatu = CSVArray(CSVParser(CSVfile, "batu"), LengthArray(CSVParser(CSVfile, "batu")))
-CSVAir = CSVArray(CSVParser(CSVfile, "air"), LengthArray(CSVParser(CSVfile, "air")))
-
-CSVfile = "bahan_bangunan.csv"
-CSVNama = CSVArray(CSVParser(CSVfile, "nama"), LengthArray(CSVParser(CSVfile, "nama")))
-CSVDeskripsi = CSVArray(CSVParser(CSVfile, "deskripsi"), LengthArray(CSVParser(CSVfile, "deskripsi")))
-CSVJumlah = CSVArray(CSVParser(CSVfile, "jumlah"), LengthArray(CSVParser(CSVfile, "jumlah")))        
 
 # looping 
 while True :
@@ -98,13 +95,13 @@ while True :
     # Batch kumpul
     elif func == "batchbangun" :
         (CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir, CSVJumlah) = BatchBangun (role, CSVUsername, CSVRole, CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir,  CSVNama, CSVJumlah)
-        print(CSVJumlah.arr)
-        print(CSVId.arr)
+        # print(CSVJumlah.arr)
+        # print(CSVId.arr)
         
     # Batch kumpul
     elif func == "batchkumpul" :
         CSVJumlah = BatchKumpul (role, CSVRole, CSVNama, CSVJumlah)
-        print(CSVJumlah.arr)
+        # print(CSVJumlah.arr)
         
     # F11 - Hancurkan Candi
     elif func == "hancurkancandi" :
