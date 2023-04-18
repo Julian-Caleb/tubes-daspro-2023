@@ -113,8 +113,8 @@ def BatchBangun (role : str, CSVUsername : CSVArray, CSVRole : CSVArray, CSVId :
 
                         # bahan-bahan 
                         AppendCSVArray(CSVPasir, tempPasirArray.arr[i])
-                        AppendCSVArray(CSVBatu, tempPasirArray.arr[i])
-                        AppendCSVArray(CSVAir, tempPasirArray.arr[i])
+                        AppendCSVArray(CSVBatu, tempBatuArray.arr[i])
+                        AppendCSVArray(CSVAir, tempAirArray.arr[i])
             
                     i += 1
                 

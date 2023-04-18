@@ -62,18 +62,18 @@ def Bangun (username : str, role : str, CSVId : CSVArray, CSVPembuat : CSVArray,
 
             # Mencari id yang available antara 1 sampai 100
             i = 1
-            while MemberOf(CSVId.arr, i):
+            while MemberOf(CSVId.arr, str(i)):
                 i = i + 1
             
             if i < 100:
                 # id
-                AppendCSVArray(CSVId, i)
+                AppendCSVArray(CSVId, str(i))
                 # Pembuat
                 AppendCSVArray(CSVPembuat, username)
                 # Bahan-bahan
-                AppendCSVArray(CSVPasir, pasir)
-                AppendCSVArray(CSVBatu, batu)
-                AppendCSVArray(CSVAir, air)
+                AppendCSVArray(CSVPasir, str(pasir))
+                AppendCSVArray(CSVBatu, str(batu))
+                AppendCSVArray(CSVAir, str(air))
 
                 print("Candi berhasil dibangun")
                 print(f"Sisa candi yang perlu dibangun: {100-i}")

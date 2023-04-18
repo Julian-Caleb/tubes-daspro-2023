@@ -14,7 +14,7 @@ from TipeBentukan import CSVArray
 
 def Exit(CSVUsername : CSVArray, CSVPassword : CSVArray, CSVRole : CSVArray, CSVId : CSVArray, CSVPembuat : CSVArray, CSVPasir : CSVArray, CSVBatu : CSVArray, CSVAir : CSVArray, CSVNama : CSVArray, CSVDeskripsi : CSVArray, CSVJumlah : CSVArray):
     # Iterasi hingga ditemukan respon yang benar
-    print("Apakah Anda mau melakukan penyimpanan file yang sudah diubah? (y/n)")
+    print("Apakah Anda mau melakukan penyimpanan file yang sudah diubah? (y/n)", end =" ")
     response = str(input())
     while response != "Y" and response != "y" and response != "N" and response != "n":
         response = str(input())
