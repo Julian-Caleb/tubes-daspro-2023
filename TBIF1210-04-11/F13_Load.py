@@ -7,6 +7,7 @@
 #
 
 # ALGORITMA
+# import
 import os
 import argparse
 from TipeBentukan import CSVArray

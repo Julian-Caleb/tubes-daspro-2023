@@ -33,6 +33,7 @@ from F07_Kumpul import Kumpul
 from F08_Batch import BatchBangun, BatchKumpul
 from F11_HancurkanCandi import HancurkanCandi
 from F13_Load import Load
+from F14_Save import Save
 from F15_Help import Help
 
 # main program
@@ -109,7 +110,10 @@ while True :
         # print(CSVUsername.arr)
         # print(CSVId.arr)
     
+    # F14 - Save
+    elif func == "save" :
+        Save (CSVUsername, CSVPassword, CSVRole, CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir, CSVNama, CSVDeskripsi, CSVJumlah) 
+    
     # F15 - Help
     elif func == "help" :
         Help (role)
-

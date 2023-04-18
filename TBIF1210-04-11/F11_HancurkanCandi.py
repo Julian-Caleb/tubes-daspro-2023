@@ -32,8 +32,9 @@ def HancurkanCandi(role : str, CSVId : CSVArray, CSVPembuat : CSVArray, CSVPasir
         return (CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir)
     
     else:
+     
         # Input id candi
-        idHancur = int(input("Masukkan ID candi: "))
+        idHancur = input("Masukkan ID candi: ")
 
         # Cek jika ada candi
         if MemberOf(CSVId.arr, idHancur):
