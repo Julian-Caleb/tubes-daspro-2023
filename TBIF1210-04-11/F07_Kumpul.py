@@ -15,8 +15,8 @@ from AdditionalFunction import AmbilBahan, IndexOf
 # role : string
 # pasir, batu, air : integer
 
-# function IndexOf (arr : array [0..Nmax-1] of string, keyword : string) -> integer
-# function AmbilBahan (CSVNama : CSVArray, CSVJumlah : CSVArray, argumen : string) -> integer, integer, integer
+# function IndexOf (arr : List, keyword : string) -> integer
+# function AmbilBahan (CSVNama : CSVArray, CSVJumlah : CSVArray, argumen : string) -> (integer, integer, integer)
 
 def Kumpul (role : str, CSVNama : CSVArray, CSVJumlah : CSVArray) -> (CSVArray):
    

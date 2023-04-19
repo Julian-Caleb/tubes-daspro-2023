@@ -23,10 +23,10 @@ from BonusFunction import Lcg_rng
 # CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir : CSVArray
 # CSVNama, CSVDeskripsi, CSVJumlah : CSVArray
 
-# function IndexOf (arr : array [0..Nmax-1] of string, keyword : string) -> integer
-# function MemberOf (arr : array [0..Nmax-1] of string, keyword : string) -> boolean
+# function IndexOf (arr : List, keyword : string) -> integer
+# function MemberOf (arr : List, keyword : string) -> boolean
 # function AppendCSVArray (CSVArray : CSVArray, element : string) -> CSVArray
-# function AmbilBahan (CSVNama : CSVArray, CSVJumlah : CSVArray, argumen : string) -> integer, integer, integer
+# function AmbilBahan (CSVNama : CSVArray, CSVJumlah : CSVArray, argumen : string) -> (integer, integer, integer)
 
 def Bangun (username : str, role : str, CSVId : CSVArray, CSVPembuat : CSVArray, CSVPasir : CSVArray, CSVBatu : CSVArray, CSVAir : CSVArray, CSVNama : CSVArray, CSVJumlah : CSVArray) -> (CSVArray, CSVArray, CSVArray, CSVArray, CSVArray, CSVArray, CSVArray) :
 

@@ -19,9 +19,9 @@ from AdditionalFunction import MemberOf, IndexOf, Delete
 
 # index : integer
 
-# function IndexOf (arr : array [0..Nmax-1] of string, keyword : string) -> integer
-# function MemberOf (arr : array [0..Nmax-1] of string, keyword : string) -> boolean
-# function Delete (arr : array [0..Nmax-1] of string, index : integer) -> array [0..Nmax-1] of string
+# function IndexOf (arr : List, keyword : string) -> integer
+# function MemberOf (arr : List, keyword : string) -> boolean
+# function Delete (arr : List, index : integer) -> List
 
 def HapusJin (role : str, CSVUsername : CSVArray, CSVPassword : CSVArray, CSVRole : CSVArray, CSVId : CSVArray, CSVPembuat : CSVArray, CSVPasir : CSVArray, CSVBatu : CSVArray, CSVAir : CSVArray) -> (CSVArray, CSVArray, CSVArray, CSVArray, CSVArray, CSVArray, CSVArray, CSVArray) :
     

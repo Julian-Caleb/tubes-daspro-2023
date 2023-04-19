@@ -21,8 +21,9 @@ from BonusFunction import Lcg_rng
 # idHancur : string
 # indexHancur : integer
 
-# function MemberOf (arr : array [0..Nmax-1] of string, keyword : string) -> boolean
-# function IndexOf (arr : array [0..Nmax-1] of string, keyword: string) -> integer
+# function MemberOf (arr : List, keyword : string) -> boolean
+# function IndexOf (arr : List, keyword: string) -> integer
+# function DeleteCSVArray (CSVArray : CSVArray, index : integer) -> CSVArray
 
 def HancurkanCandi(role : str, CSVId : CSVArray, CSVPembuat : CSVArray, CSVPasir : CSVArray, CSVBatu : CSVArray, CSVAir : CSVArray, CSVNama : CSVArray, CSVJumlah : CSVArray) -> (CSVArray, CSVArray, CSVArray, CSVArray, CSVArray, CSVArray, CSVArray):
     

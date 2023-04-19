@@ -6,11 +6,16 @@ from typing import List
 # Fungsi IndexColumnName menerima sebuah array dan string mencari pada index ke berapa string itu terdapat
 
 # KAMUS
-# 
+# arr : array of string
+# x : string
+
+# i : integer
+
+# function LengthCSV (arr : arr) -> integer
 
 # ALGORITMA
 def IndexColumnName (arr : List, X : str) :
-    # Asumsikan pasti ketemu
+    # Asumsikan pasti ditemukan
     
     # inisialisasi index string yang dicari
     i = 0
@@ -31,17 +36,24 @@ def IndexColumnName (arr : List, X : str) :
 # ALGORITMA
 def CSVParser(file : str, columnName : str) -> List : 
     
+    # inisiasi variabel mark
+    MARK = "MARK"
+    
     # mengambil file
     with open(file, 'r') as file:
         data = file.read()
     
     # memetakan data menjadi array
-    array = Split(data, "\n")
+    result = [None for i in range(103)]
+    result[0] = "MARK"
+    array = Split(data, result, "\n")
     
-    # menghilangkan ; dari array, mengubahnya menjadi matrix
+    # # menghilangkan ; dari array, mengubahnya menjadi matrix
     i = 0
-    while i < LengthCSV(array) :
-        array[i] = Split(array[i], ";")
+    while i < LengthCSV(array) and array[i] != "MARK":
+        result = [None for i in range (6)]
+        result[0] = "MARK"
+        array[i] = Split(array[i], result, ";")
         i += 1
     
     # mencari index atribut column
@@ -49,12 +61,11 @@ def CSVParser(file : str, columnName : str) -> List :
     
     # Inisialisasi array baru dengan Mark
     arrayColumnName = [None for i in range (103)]
-    MARK = "MARK"
     arrayColumnName[0] = MARK
     
     # Memasukkan isi dari kolom ke dalam array baru (arrayColumnName)
     i = 1
-    while i < LengthCSV(array) - 1 :
+    while array[i] != MARK :
         if array[i] != [''] :
             arrayColumnName[i], arrayColumnName[i-1] = MARK, array[i][indexColumnName]
             i += 1
@@ -64,6 +75,7 @@ def CSVParser(file : str, columnName : str) -> List :
     return arrayColumnName
 
 # APLIKASI
-# print(CSVParser("candi.csv", "pasir"))
+# test = "default/user.csv"
+# print(CSVParser(test, "username"))
 
 #-----------------------------------------------------------------------------------#

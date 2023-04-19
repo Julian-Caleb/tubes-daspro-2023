@@ -23,8 +23,8 @@ from AdditionalFunction import MemberOf, IndexOf, Delete
 # CSVUsername, CSVRole : CSVArray
 # CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir : CSVArray
 
-# function MemberOf (arr : array [0..Nmax-1] of string, keyword : string) -> boolean
-# function Delete (arr : array [0..Nmax-1] of string, index : integer) -> array [0..Nmax-1] of string
+# function MemberOf (arr : List, keyword : string) -> boolean
+# function Delete (arr : List, index : integer) -> List
 
 def UbahJin (role : str, CSVUsername : CSVArray, CSVPassword : CSVArray, CSVRole : CSVArray, CSVId : CSVArray, CSVPembuat : CSVArray, CSVPasir : CSVArray, CSVBatu : CSVArray, CSVAir : CSVArray) -> (CSVArray, CSVArray, CSVArray, CSVArray, CSVArray, CSVArray, CSVArray, CSVArray) :
 

@@ -22,10 +22,10 @@ from AdditionalFunction import Frequency, IndexOf, AmbilBahan, AppendCSVArray, S
 # tempPasir, tempBatu, tempAir : integer
 # pasir, batu, air : integer
 
-# function Frequency (arr : array [0..Nmax-1] of string, keyword : string) -> integer
+# function Frequency (arr : List, keyword : string) -> integer
 # function AppendCSVArray (CSVArray : CSVArray, element : string) -> CSVArray
 # function SumCSVArray ( CSVArray : CSVArray ) -> integer
-# function AmbilBahan (CSVNama : CSVArray, CSVJumlah : CSVArray, argumen : string) -> integer, integer, integer
+# function AmbilBahan (CSVNama : CSVArray, CSVJumlah : CSVArray, argumen : string) -> (integer, integer, integer)
 
 # ALGORITMA 
 def BatchBangun (role : str, CSVUsername : CSVArray, CSVRole : CSVArray, CSVId : CSVArray, CSVPembuat : CSVArray, CSVPasir : CSVArray, CSVBatu : CSVArray, CSVAir : CSVArray,  CSVNama : CSVArray, CSVJumlah : CSVArray) -> (CSVArray, CSVArray, CSVArray, CSVArray, CSVArray, CSVArray) :
@@ -169,9 +169,9 @@ def BatchBangun (role : str, CSVUsername : CSVArray, CSVRole : CSVArray, CSVId :
 # tempPasir, tempBatu, tempAir : integer
 # pasir, batu, air : integer
 
-# function Frequency (arr : array [0..Nmax-1] of string, keyword : string) -> integer
-# function IndexOf (arr : array [0..Nmax-1] of string, keyword : string) -> integer
-# function AmbilBahan (CSVNama : CSVArray, CSVJumlah : CSVArray, argumen : string) -> integer, integer, integer
+# function Frequency (arr : List, keyword : string) -> integer
+# function IndexOf (arr : List, keyword : string) -> integer
+# function AmbilBahan (CSVNama : CSVArray, CSVJumlah : CSVArray, argumen : string) -> (integer, integer, integer)
 
 # ALGORITMA 
 def BatchKumpul (role : str, CSVRole : CSVArray, CSVNama : CSVArray, CSVJumlah : CSVArray) -> CSVArray :

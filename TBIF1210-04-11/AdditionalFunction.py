@@ -11,7 +11,7 @@ from BonusFunction import Lcg_rng
 
 # KAMUS LOKAL 
 # constant Nmax : int = 103
-# type arr: array [0..Nmax-1] of str
+# type List: array [0..Nmax-1] of str
 # i, count : int
 
 # ALGORITMA 
@@ -64,7 +64,7 @@ def LengthString (string : str) -> int :
 
 # KAMUS LOKAL 
 # constant Nmax : integer = 10
-# type arr : array [0..Nmax] of string { berisi data raw dari CSV }
+# type List : array [0..Nmax] of string { berisi data raw dari CSV }
 # i, count : integer
 
 # ALGORITMA 
@@ -73,15 +73,39 @@ def LengthCSV (arr : List) -> int :
 
 #-----------------------------------------------------------------------------------#
 
-# FUNCTION SPLIT
-#
+# FUNCTION SPLIT 
+# Function split menerima 3 buah masukan yaitu sebuah string, array sebagai template hasil pemisahan, dan character yang menjadi penanda dilakukannya pemisahan
+#   I.S. 1 string, 1 array, dan 1 char
+#   F.S. array yang berisi hasil pemisahan 
 
-# KAMUS 
-#
+# KAMUS LOKAL 
+# type List : array of string
+
+# split : string
+# result : List
+# splitter : char
+
+# temp : string
+# i : integer
+
+# function LengthString (str : string) -> integer
+# function Append (arr : List, element : string) -> List
 
 # ALGORITMA
-def Split (arr : List, spliter : str) -> List :
-    return arr.split(spliter) 
+def Split (split : str, result : List, splitter : str) -> List :
+    temp = ""
+    i = 0
+    while (i < LengthString(split)) and split[i] != None :
+        if split[i] != splitter :
+            temp += split[i]
+        else :
+            Append(result, temp)
+            temp = ""
+        i += 1
+    if temp != "" :
+        Append(result, temp)
+    
+    return result
 
 #-----------------------------------------------------------------------------------#
 
@@ -93,7 +117,8 @@ def Split (arr : List, spliter : str) -> List :
 # KAMUS LOKAL 
 
 # constant Nmax : integer = 103
-# arr : array [0..Nmax-1] of string
+# type List : array [0..Nmax-1] of string
+# arr : List
 # i : integer
 
 # ALGORITMA
@@ -209,14 +234,15 @@ def CompareString (stringOne : str, stringTwo : str, op : int) -> str :
 
 # KAMUS LOKAL 
 # constant Nmax : integer = 103
-# arr : array [0..Nmax-1] of string
+# type List : array [0..Nmax-1] of string
+# arr : List
 
 # op : char
 # output : string
 # n : integer
 
 # function CompareString (stringOne : string, stringTwo : string, op : char) -> string 
-# function LengthArray (arr : arr) -> integer
+# function LengthArray (arr : List) -> integer
 
 # ALGORITMA
 def CompareArrayOfString (arr : List, op : str) -> str :
@@ -237,7 +263,8 @@ def CompareArrayOfString (arr : List, op : str) -> str :
 
 # KAMUS LOKAL 
 # constant NMax : int = 103
-# arr : array [0..Nmax-1] of str
+# type List : array [0..Nmax-1] of str
+# arr : List
 # keyword : str
 # i : int
 
@@ -267,7 +294,8 @@ def IndexOf (arr : List, keyword : str) -> int :
 
 # KAMUS LOKAL 
 # constant NMax : int = 103
-# arr : array [0..Nmax-1] of str
+# type List : array [0..Nmax-1] of str
+# arr : List
 # keyword : str
 # Found : bool
 # i : int 
@@ -303,7 +331,8 @@ def MemberOf (arr: List, keyword : str) -> bool :
 
 # KAMUS LOKAL 
 # constant Nmax : int = 103
-# arr : array [0..Nmax-1] of str
+# type List : array [0..Nmax-1] of str
+# arr : List
 # keyword : str
 # i, count : int
 
@@ -337,7 +366,8 @@ def Frequency (arr : List, keyword : str) -> int :
 
 # KAMUS LOKAL
 # constant Nmax : int = 103
-# type arr : array [0..Nmax-1] of str
+# type List : array [0..Nmax-1] of str
+# arr : List
 
 # ALGORITMA
 def Delete (arr : List, index : int) -> List :
