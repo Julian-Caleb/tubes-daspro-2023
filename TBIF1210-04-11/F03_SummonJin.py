@@ -22,8 +22,8 @@ from AdditionalFunction import Frequency, MemberOf, AppendCSVArray
 # CSVPassword : CSVArray
 # CSVRole : CSVArray
 
-# function Frequency (arr : array [0..Nmax-1] of string, keyword : string) -> integer
-# function MemberOf (arr : array [0..Nmax-1] of string, keyword : string) -> boolean
+# function Frequency (arr : List, keyword : string) -> integer
+# function MemberOf (arr : List, keyword : string) -> boolean
 # function LengthString (str : string) -> integer
 # function AppendCSVArray (CSVArray : CSVArray, element : string) -> CSVArray
 
