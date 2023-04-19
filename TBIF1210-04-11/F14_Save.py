@@ -1,11 +1,34 @@
-# PROCEDURE SAVE
-# Procedure Save
-#   I.S.
-#   F.S.
+# { PROCEDURE SAVE }
+# { Procedure Save menerima 11 CSVArray, meminta input nama folder dari user, membuat folder tersebut jika tidak tersedia, membuat 3 buah file csv, dan menuliskan data pada CSVArray ke dalam file-file csv tersebut. 
+# I.S. 11 buah CSVArray
+# F.S. Memasukkan CSVArray ke dalam 3 file CSV }
 
-# KAMUS LOKAL
+# { KAMUS LOKAL }
+# constant Nmax : integer = 103
+# constant mark : string = “”
 
-# ALGORITMA
+# type CSVArray : <arr : array [0..Nmax-1] of string,
+# 				Neff : integer >
+	
+# CSVUSername, CSVPassword, CSVRole : CSVArray
+# CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir : CSVArray
+# CSVNama, CSVDeskripsi, CSVJumlah : CSVArray
+
+# file : SEQFILE of
+# (*) baris : string
+# (1) mark
+	
+# namaFolder : string
+# csvPath : string
+
+# function os.path.exists (namaFolder : string) -> Boolean
+# { fungsi terdefinisi yang mengecek apakah terdapat folder namaFolder dalam folder program berada }
+# procedure os.mkdir (input namaFolder : string)
+# { prosedur terdefinisi yang membuat folder namaFolder }
+# function os.path.join(namaFolder1 : string, namaFolder2 : string) -> string
+# { fungsi terdefinisi yang menyatukan beberapa string menjadi path folder }
+
+# ALGORITMA 
 # Import
 import os
 from TipeBentukan import CSVArray
@@ -28,10 +51,10 @@ def Save (CSVUsername : CSVArray, CSVPassword : CSVArray, CSVRole : CSVArray, CS
 
     # Memasukkan ke dalam file csv
     # 1. user.csv
-    csv_path = os.path.join("save", namaFolder, "user.csv")
+    csvPath = os.path.join("save", namaFolder, "user.csv")
 
     # Mengisi file csv
-    with open(csv_path, "w") as file:
+    with open(csvPath, "w") as file:
         i = 0
         file.write("username;password;role\n")
         while (CSVUsername.arr[i] != "MARK") and (CSVPassword.arr[i] != "MARK") and (CSVRole.arr[i] != "MARK") :
@@ -48,10 +71,10 @@ def Save (CSVUsername : CSVArray, CSVPassword : CSVArray, CSVRole : CSVArray, CS
     file.close()
             
     # 2. candi.csv
-    csv_path = os.path.join("save", namaFolder, "candi.csv")
+    csvPath = os.path.join("save", namaFolder, "candi.csv")
 
     # Mengisi file csv
-    with open(csv_path, "w") as file:
+    with open(csvPath, "w") as file:
         i = 0
         file.write("id;pembuat;pasir;batu;air\n")
         while (CSVId.arr[i] != "MARK") and (CSVPembuat.arr[i] != "MARK") and (CSVPasir.arr[i] != "MARK") and (CSVBatu.arr[i] != "MARK") and (CSVAir.arr[i] != "MARK") :
@@ -72,10 +95,10 @@ def Save (CSVUsername : CSVArray, CSVPassword : CSVArray, CSVRole : CSVArray, CS
     file.close()
     
     # 3. bahan_bangunan.csv
-    csv_path = os.path.join("save", namaFolder, "bahan_bangunan.csv")
+    csvPath = os.path.join("save", namaFolder, "bahan_bangunan.csv")
 
     # Mengisi file csv
-    with open(csv_path, "w") as file:
+    with open(csvPath, "w") as file:
         i = 0
         file.write("nama;deskripsi;jumlah\n")
         while (CSVNama.arr[i] != "MARK") and (CSVDeskripsi.arr[i] != "MARK") and (CSVJumlah.arr[i] != "MARK") :

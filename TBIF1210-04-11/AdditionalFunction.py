@@ -81,14 +81,14 @@ def LengthCSV (arr : List) -> int :
 
 # ALGORITMA
 def Split (arr : List, spliter : str) -> List :
-    return arr.split(spliter) # sementara
+    return arr.split(spliter) 
 
 #-----------------------------------------------------------------------------------#
 
 # FUNCTION APPEND 
 # Fungsi Append menerima sebuah array dan string, menambahkan string pada array dan menambahkan 1 pada array.
-#   I.S.
-#   F.S. 
+#   I.S. sebuah array of string dan element
+#   F.S. array gabungan array lama dan element tersebut 
 
 # KAMUS LOKAL 
 
@@ -119,24 +119,15 @@ def Append (arr : List, element : str) -> List :
 
 #-----------------------------------------------------------------------------------#
 
-def Append2 (a, n) :
-    z = a + n
-    return z # sama gk nih? element nya tuh list bukan?
-
-#-----------------------------------------------------------------------------------#
-
 # FUNCTION APPENDCSVARRAY 
 # Fungsi AppendCSVArray menerima sebuah CSVarray dan string, menambahkan string pada CSVarray.arr dan menambahkan 1 pada CSVArray.Neff.
-#   I.S. 
-#   F.S. 
+#   I.S. sebuah CSVArray dan element
+#   F.S. CSVArray dengan CSVArray.arr gabungan array lama dan element tersebut serta CSVArray.Neff yang telah ditambah 1
 
 # KAMUS LOKAL
-
 # constant Nmax : integer = 103
-
 # type CSVArray : <arr : array [0..Nmax-1] of string,
 # 				Neff : integer >
-
 # i : integer
 
 # ALGORITMA 
@@ -152,11 +143,15 @@ def AppendCSVArray (CSVArray : CSVArray, element : str) -> CSVArray :
 
 #-----------------------------------------------------------------------------------#
 
-# FUNCTION ORDCHAR
-#
+# FUNCTION ORDCHAR 
+# Function OrdChar menerima sebuah input sebuah karakter dan mengembalikan nilai (leksikografis) berdasarkan urutan alfabet referensi 
+#   I.S. sebuah char
+#   F.S. integer urutan ke berapa karakter tersebut berada 
 
-# KAMUS 
-#
+# KAMUS LOKAL 
+# x : char
+# alfabet : string
+# index : integer
 
 # ALGORITMA
 def OrdChar (x : str) -> int :
@@ -172,13 +167,18 @@ def OrdChar (x : str) -> int :
 # Function CompareString dibuat untuk menerima input 2 string dan operator (> atau <).
 # membandingkan leksikografis antara 2 string, mengembalikan string
 # dengan leksikografis lebih tinggi atau rendah berdasarkan operatornya
+#   I.S. 2 buah string dan pembandingnya
+#   F.S. string yang lebih kecil atau besar leksikografisnya
 
 # KAMUS 
-#
+# charIndex : integer
+# stringOne, stringTwo, op : string
+
+# function OrdChar (x : char) -> integer
 
 # ALGORITMA
-def CompareString (stringOne : str, stringTwo : str, op : str) -> str : 
-    # asumsi perbandingan hanya lebih besar atau lebih kecil
+def CompareString (stringOne : str, stringTwo : str, op : int) -> str : 
+    # asumsi kedua string pasti berbeda dan perbandingan hanya lebih besar atau lebih kecil
     
     # charIndex sebagai penanda huruf keberapa
     charIndex = 0
@@ -202,12 +202,21 @@ def CompareString (stringOne : str, stringTwo : str, op : str) -> str :
 
 #-----------------------------------------------------------------------------------#
 
-# FUNCTION COMPAREARRAYOFSTRING
-# Function CompareArrayOfString menerima array of string dan operator dan mengembalikan string dengan
-# leksikografis tertinggi / terendah berdasarkan operatornya
+# FUNCTION COMPAREARRAYOFSTRING 
+# Function CompareArrayOfString menerima array of string dan operator dan mengembalikan string dengan leksikografis tertinggi / terendah berdasarkan operatornya
+#   I.S. array of string dan sebuah karakter
+#   F.S. string dengan leksikografis tertinggi atau terendah
 
-# KAMUS
-# 
+# KAMUS LOKAL 
+# constant Nmax : integer = 103
+# arr : array [0..Nmax-1] of string
+
+# op : char
+# output : string
+# n : integer
+
+# function CompareString (stringOne : string, stringTwo : string, op : char) -> string 
+# function LengthArray (arr : arr) -> integer
 
 # ALGORITMA
 def CompareArrayOfString (arr : List, op : str) -> str :
@@ -437,4 +446,103 @@ def SumCSVArray ( CSVArray : CSVArray ) -> int :
 
     return total
 
+#-----------------------------------------------------------------------------------#
 
+# FUNCTION MINCSVARRAY 
+# Function MinCSVArray menerima sebuah CSVArray dan mencari nilai terkecil 
+#   I.S. 1 buah CSVArray
+#   F.S. 2 buah integer yaitu index dengan nilai terkecil dan nilainya 
+
+# KAMUS LOKAL 
+# constant Nmax : integer = 103
+# type CSVArray : <arr : array [0..Nmax-1] of string,
+# 				Neff : integer >
+
+# nilaiMin, indexMin : integer
+# i : integer
+
+# function int (string : string) -> integer
+# { fungsi terdefinisi yang mengubah tipe data string menjadi integer }
+
+# ALGORITMA 
+def MinCSVArray (CSVArray : CSVArray) -> (int, int) :
+
+    #inisialisasi variabel 
+    nilaiMin = 9999999999999999
+    indexMin = 0
+
+    # iterasi 
+    i = 0
+
+    while (CSVArray.arr[i] != "MARK") :
+        # cek jika ada isinya 
+        if (CSVArray.arr[i] != None) :
+            if (int(CSVArray.arr[i]) < nilaiMin) :
+                nilaiMin = int(CSVArray.arr[i])
+                indexMin = i
+
+        i += 1
+
+    # CSVId.arr[i] = “MARK” 
+
+    return (nilaiMin, indexMin)
+
+#-----------------------------------------------------------------------------------#
+
+# FUNCTION MAXCSVARRAY 
+# Function MaxCSVArray menerima sebuah CSVArray dan mencari nilai terbesar 
+#   I.S. 1 buah CSVArray
+#   F.S. 2 buah integer yaitu index dengan nilai terbesar dan nilainya 
+
+# KAMUS LOKAL 
+# constant Nmax : integer = 103
+# type CSVArray : <arr : array [0..Nmax-1] of string,
+# 				Neff : integer >
+
+# nilaiMax, indexMax : integer
+# i : integer
+
+# function int (string : string) -> integer
+# { fungsi terdefinisi yang mengubah tipe data string menjadi integer }
+
+# ALGORITMA 
+def MaxCSVArray (CSVArray : CSVArray) -> (int, int) :
+
+    #inisialisasi variabel 
+    nilaiMax = 0
+    indexMax = 0
+
+    # iterasi 
+    i = 0
+
+    while (CSVArray.arr[i] != "MARK") :
+        # cek jika ada isinya 
+        if (CSVArray.arr[i] != None) :
+            if (int(CSVArray.arr[i]) > nilaiMax) :
+                nilaiMax = int(CSVArray.arr[i])
+                indexMax = i
+
+        i += 1
+
+    # CSVId.arr[i] = “MARK” 
+
+    return (nilaiMax, indexMax)
+
+#-----------------------------------------------------------------------------------#
+
+# FUNCTION TOTALHARGA
+# Function TotalHarga mencari total harga pasir, batu, dan air 
+#   I.S. 3 buah integer yaitu jumlah pasir, batu, air
+#   F.S. sebuah integer yang menjadi total harga 
+
+# KAMUS LOKAL
+# pasir, batu, air : integer
+# harga : integer
+
+# ALGORITMA 
+def TotalHarga (pasir : int, batu : int, air : int) -> int :
+
+    # total
+    harga = 10000 * pasir + 15000 * batu + 7500 * air
+
+    return harga

@@ -48,10 +48,15 @@ def BatchBangun (role : str, CSVUsername : CSVArray, CSVRole : CSVArray, CSVId :
         else : # (jumlahJin > 0)
             
             # inisialisasi variabel
-            tempPembuatArray = CSVArray(['MARK', None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None], 0)
-            tempPasirArray = CSVArray(['MARK', None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None], 0)
-            tempBatuArray = CSVArray(['MARK', None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None], 0)
-            tempAirArray = CSVArray(['MARK', None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None], 0)
+            Nmax = 103
+            tempPembuatArray = CSVArray([None for i in range (Nmax)], 0)
+            tempPembuatArray.arr[0] = "MARK"
+            tempPasirArray = CSVArray([None for i in range (Nmax)], 0)
+            tempPasirArray.arr[0] = "MARK"
+            tempBatuArray = CSVArray([None for i in range (Nmax)], 0)
+            tempBatuArray.arr[0] = "MARK"
+            tempAirArray = CSVArray([None for i in range (Nmax)], 0)
+            tempAirArray.arr[0] = "MARK"
             banyakPasir = 0
             banyakBatu = 0
             banyakAir = 0
@@ -84,13 +89,8 @@ def BatchBangun (role : str, CSVUsername : CSVArray, CSVRole : CSVArray, CSVId :
             # cek apakah bahan cukup atau tidak
             (pasir, batu, air) = AmbilBahan (CSVNama, CSVJumlah, "data")
             
-            # Jika tidak cukup, 
-            if ((SumCSVArray (tempPasirArray) > pasir) or (SumCSVArray (tempBatuArray) > batu) or (SumCSVArray (tempAirArray) > air)) :
-                
-                # keluarkan pesan 
-                print("Bangun gagal. Kurang", SumCSVArray (tempPasirArray) - pasir, "pasir", SumCSVArray (tempBatuArray) - batu, "batu, dan", SumCSVArray (tempAirArray) - air, "air.")
-            
-            else : # (SumCSVArray (tempPasirArray) <= pasir) or (SumCSVArray (tempBatuArray) <= batu) or (SumCSVArray (tempAirArray) <= air) 
+            # Jika cukup,           
+            if (SumCSVArray (tempPasirArray) <= pasir) and (SumCSVArray (tempBatuArray) <= batu) and (SumCSVArray (tempAirArray) <= air) :
 
                 # iterasi array temporary dimasukkan ke dalam CSVArray, perhatikan tipe data 
                 i = 0
@@ -125,6 +125,29 @@ def BatchBangun (role : str, CSVUsername : CSVArray, CSVRole : CSVArray, CSVId :
             
                 # tampilkan pesan 
                 print ("Jin berhasil membangun total", tempPembuatArray.Neff, "candi.")
+                
+            else : # (SumCSVArray (tempPasirArray) > pasir) or (SumCSVArray (tempBatuArray) > batu) or (SumCSVArray (tempAirArray) > air)
+                
+                # keluarkan pesan 
+                print("Bangun gagal. Kurang ", end ="")
+                if (SumCSVArray (tempPasirArray) > pasir) :
+                    print(SumCSVArray (tempPasirArray) - pasir, "pasir", end ="")
+                    if (SumCSVArray (tempBatuArray) > batu) and (SumCSVArray (tempAirArray) > air) :
+                        print(",", end= " ")
+                    elif (SumCSVArray (tempBatuArray) > batu) or (SumCSVArray (tempAirArray) > air) :
+                        print(" dan", end= " ")
+                    else : # (SumCSVArray (tempBatuArray) < batu) and (SumCSVArray (tempAirArray) < air)
+                        print(".")
+                if (SumCSVArray (tempBatuArray) > batu) :
+                    print (SumCSVArray (tempBatuArray) - batu, "batu", end = "")
+                    if (SumCSVArray (tempPasirArray) > pasir) and (SumCSVArray (tempAirArray) > air) :
+                        print(", dan", end= " ")
+                    elif (SumCSVArray (tempAirArray) > air) : 
+                        print(" dan", end= " ")
+                    else : # (SumCSVArray (tempPasirArray) < pasir) and (SumCSVArray (tempAirArray) < air)
+                        print(".")
+                if (SumCSVArray (tempAirArray) > air) :
+                    print(SumCSVArray (tempAirArray) - air, "air.")
                 
             return (CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir, CSVJumlah)
 

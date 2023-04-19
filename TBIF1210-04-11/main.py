@@ -31,6 +31,7 @@ from F05_UbahJin import UbahJin
 from F06_Bangun import Bangun
 from F07_Kumpul import Kumpul
 from F08_Batch import BatchBangun, BatchKumpul
+from F10_LaporanCandi import LaporanCandi
 from F11_HancurkanCandi import HancurkanCandi
 from F12_AyamBerkokok import AyamBerkokok
 from F13_Load import Load
@@ -106,6 +107,10 @@ while True :
         CSVJumlah = BatchKumpul (role, CSVRole, CSVNama, CSVJumlah)
         # print(CSVJumlah.arr)
         
+    # F10 - Laporan Candi
+    elif func == "laporancandi" :
+        LaporanCandi(CSVId, CSVPasir, CSVBatu, CSVAir)
+        
     # F11 - Hancurkan Candi
     elif func == "hancurkancandi" :
         (CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir) = HancurkanCandi(role, CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir, CSVNama, CSVJumlah)
@@ -114,7 +119,7 @@ while True :
     
     # F12 - Ayam Berkokok
     elif func == "ayamberkokok" :
-        (CSVId) = AyamBerkokok(CSVId)
+        AyamBerkokok(CSVId)
 
     # F14 - Save
     elif func == "save" :
@@ -127,3 +132,4 @@ while True :
     # F16 - Exit
     elif func == "exit" :
         Exit (CSVUsername, CSVPassword, CSVRole, CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir, CSVNama, CSVDeskripsi, CSVJumlah)
+CSVUsername, CSVPassword, CSVRole, CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir, CSVNama, CSVDeskripsi, CSVJumlah

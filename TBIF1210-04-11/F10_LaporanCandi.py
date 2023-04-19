@@ -1,3 +1,7 @@
+# import 
+from TipeBentukan import CSVArray
+from AdditionalFunction import AppendCSVArray, MinCSVArray, MaxCSVArray, TotalHarga, SumCSVArray
+
 # { PROCEDURE LAPORANCANDI }
 # { Procedure LaporanCandi yang hanya dapat dilakukan oleh Bandung Bondowoso (“bandung_bondowoso”) menerima 4 CSV Array dan mengeluarkan pesan-pesan terkait berapa banyak candi yang dibuat, banyak pasir, batu, dan air yang digunakan, serta informasi ID candi termahal dan termurah.
 #   I.S. 4 buah CSVArray
@@ -27,10 +31,13 @@
 # { fungsi terdefinisi yang mengubah tipe data integer menjadi string }
 
 # { ALGORITMA }
-def LaporanCandi (input CSVId : CSVArray, input CSVPasir : CSVArray, input CSVBatu : CSVArray, input CSVAir : CSVArray):
+def LaporanCandi (CSVId : CSVArray, CSVPasir : CSVArray, CSVBatu : CSVArray, CSVAir : CSVArray):
 
     # { Inisialisasi variabel }
-    totalCandi, totalPasir, totalBatu, totalAir = 0
+    totalCandi = 0
+    totalPasir = 0 
+    totalBatu = 0
+    totalAir = 0
 
     # { mengisi variabel }
     totalCandi = CSVId.Neff
@@ -47,35 +54,36 @@ def LaporanCandi (input CSVId : CSVArray, input CSVPasir : CSVArray, input CSVBa
         totalBatu = SumCSVArray(CSVBatu)
         totalAir = SumCSVArray(CSVAir)
 
-    # { membuat CSVArray sementara untuk harga }
-    tempHarga.arr = ['MARK', None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
-    tempHarga.Neff = 0
+        # { membuat CSVArray sementara untuk harga }
+        Nmax = 103
+        tempHarga = CSVArray([None for i in range (Nmax)], 0)
+        tempHarga.arr[0] = "MARK"
 
-    # { iterasi menghitung harga total }
-    i = 0
-    while (CSVId.arr[i] != "MARK"):
+        # { iterasi menghitung harga total }
+        i = 0
+        while (CSVId.arr[i] != "MARK"):
 
-        # { cek jika ada isinya }
-        if (CSVId.arr[i] != None):
+            # { cek jika ada isinya }
+            if (CSVId.arr[i] != None):
 
-            # { menghitung harga dan dimasukkan tempHarga }
-            AppendCSVArray(tempHarga, string(TotalHarga(integer(CSVPasir.arr[i]), integer(CSVBatu.arr[i]), integer(CSVAir.arr[i])))
+                # { menghitung harga dan dimasukkan tempHarga }
+                AppendCSVArray(tempHarga, str(TotalHarga(int(CSVPasir.arr[i]), int(CSVBatu.arr[i]), int(CSVAir.arr[i]))))
 
-        else: # { CSVId.arr[i] /= None }
+            else: # { CSVId.arr[i] /= None }
 
-            AppendCSVArray(tempHarga, None)
+                AppendCSVArray(tempHarga, None)
 
-        i = i + 1
+            i = i + 1
 
-    # { CSVId.arr[i] = “MARK” }
-    hargaMax, indexMax = MaxCSVArray(tempHarga)
-    hargaMin, indexMin = MinCSVArray(tempHarga)
-    idMax = CSVId.arr[indexMax]
-    idMin = CSVId.arr[indexMin]
+        # { CSVId.arr[i] = “MARK” }
+        (hargaMax, indexMax) = MaxCSVArray(tempHarga)
+        (hargaMin, indexMin) = MinCSVArray(tempHarga)
+        idMax = CSVId.arr[indexMax]
+        idMin = CSVId.arr[indexMin]
 
-    print("> Total Candi: ", totalCandi)
-    print("> Total Pasir yang digunakan: ", totalPasir)
-    print("> Total Batu yang digunakan: ", totalBatu)
-    print("> Total Air yang digunakan: ", totalAir)
-    print("> ID Candi Termahal: ", idMax, "(Rp ", hargaMax, ")")
-    print("> ID Candi Termurah: ", idMin, "(Rp ", hargaMin, ")")
+        print("> Total Candi:", totalCandi)
+        print("> Total Pasir yang digunakan:", totalPasir)
+        print("> Total Batu yang digunakan:", totalBatu)
+        print("> Total Air yang digunakan:", totalAir)
+        print("> ID Candi Termahal:", idMax, "(Rp" + str(hargaMax) + ")")
+        print("> ID Candi Termurah:", idMin, "(Rp" + str(hargaMin) + ")")

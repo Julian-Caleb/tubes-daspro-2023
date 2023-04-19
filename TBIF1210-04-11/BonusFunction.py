@@ -20,12 +20,12 @@ def Lcg_rng():
     seed = seed % m
     seed = (a * seed + c) % m
     rand = seed % 6
-    return (int(rand))
+    return (rand)
 
 # APLIKASI 
-pasir = Lcg_rng()
-batu = Lcg_rng()
-air = Lcg_rng()
+# pasir = Lcg_rng()
+# batu = Lcg_rng()
+# air = Lcg_rng()
 
 # print(pasir, batu, air)
 
