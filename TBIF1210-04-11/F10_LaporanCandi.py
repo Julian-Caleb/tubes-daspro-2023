@@ -31,59 +31,66 @@ from AdditionalFunction import AppendCSVArray, MinCSVArray, MaxCSVArray, TotalHa
 # { fungsi terdefinisi yang mengubah tipe data integer menjadi string }
 
 # { ALGORITMA }
-def LaporanCandi (CSVId : CSVArray, CSVPasir : CSVArray, CSVBatu : CSVArray, CSVAir : CSVArray):
+def LaporanCandi (role : str, CSVId : CSVArray, CSVPasir : CSVArray, CSVBatu : CSVArray, CSVAir : CSVArray):
 
-    # { Inisialisasi variabel }
-    totalCandi = 0
-    totalPasir = 0 
-    totalBatu = 0
-    totalAir = 0
+    # cek role 
+    if (role != "bandung_bondowoso") :
 
-    # { mengisi variabel }
-    totalCandi = CSVId.Neff
-    if (totalCandi == 0):
-        print("> Total Candi: 0")
-        print("> Total Pasir yang digunakan: 0")
-        print("> Total Batu yang digunakan: 0")
-        print("> Total Air yang digunakan: 0")
-        print("> ID Candi Termahal: -")
-        print("> ID Candi Termurah: -")
+        print("Laporan jin hanya dapat diakses oleh akun Bandung Bondowoso.")
 
-    else: # { totalCandi > 0 } 
-        totalPasir = SumCSVArray(CSVPasir)
-        totalBatu = SumCSVArray(CSVBatu)
-        totalAir = SumCSVArray(CSVAir)
+    else : # role == "bandung_bondowoso" 
 
-        # { membuat CSVArray sementara untuk harga }
-        Nmax = 103
-        tempHarga = CSVArray([None for i in range (Nmax)], 0)
-        tempHarga.arr[0] = "MARK"
+        # { Inisialisasi variabel }
+        totalCandi = 0
+        totalPasir = 0 
+        totalBatu = 0
+        totalAir = 0
 
-        # { iterasi menghitung harga total }
-        i = 0
-        while (CSVId.arr[i] != "MARK"):
+        # { mengisi variabel }
+        totalCandi = CSVId.Neff
+        if (totalCandi == 0):
+            print("> Total Candi: 0")
+            print("> Total Pasir yang digunakan: 0")
+            print("> Total Batu yang digunakan: 0")
+            print("> Total Air yang digunakan: 0")
+            print("> ID Candi Termahal: -")
+            print("> ID Candi Termurah: -")
 
-            # { cek jika ada isinya }
-            if (CSVId.arr[i] != None):
+        else: # { totalCandi > 0 } 
+            totalPasir = SumCSVArray(CSVPasir)
+            totalBatu = SumCSVArray(CSVBatu)
+            totalAir = SumCSVArray(CSVAir)
 
-                # { menghitung harga dan dimasukkan tempHarga }
-                AppendCSVArray(tempHarga, str(TotalHarga(int(CSVPasir.arr[i]), int(CSVBatu.arr[i]), int(CSVAir.arr[i]))))
+            # { membuat CSVArray sementara untuk harga }
+            Nmax = 103
+            tempHarga = CSVArray([None for i in range (Nmax)], 0)
+            tempHarga.arr[0] = "MARK"
 
-            else: # { CSVId.arr[i] /= None }
+            # { iterasi menghitung harga total }
+            i = 0
+            while (CSVId.arr[i] != "MARK"):
 
-                AppendCSVArray(tempHarga, None)
+                # { cek jika ada isinya }
+                if (CSVId.arr[i] != None):
 
-            i = i + 1
+                    # { menghitung harga dan dimasukkan tempHarga }
+                    AppendCSVArray(tempHarga, str(TotalHarga(int(CSVPasir.arr[i]), int(CSVBatu.arr[i]), int(CSVAir.arr[i]))))
 
-        # { CSVId.arr[i] = “MARK” }
-        (hargaMax, indexMax) = MaxCSVArray(tempHarga)
-        (hargaMin, indexMin) = MinCSVArray(tempHarga)
-        idMax = CSVId.arr[indexMax]
-        idMin = CSVId.arr[indexMin]
+                else: # { CSVId.arr[i] /= None }
 
-        print("> Total Candi:", totalCandi)
-        print("> Total Pasir yang digunakan:", totalPasir)
-        print("> Total Batu yang digunakan:", totalBatu)
-        print("> Total Air yang digunakan:", totalAir)
-        print("> ID Candi Termahal:", idMax, "(Rp" + str(hargaMax) + ")")
-        print("> ID Candi Termurah:", idMin, "(Rp" + str(hargaMin) + ")")
+                    AppendCSVArray(tempHarga, None)
+
+                i = i + 1
+
+            # { CSVId.arr[i] = “MARK” }
+            (hargaMax, indexMax) = MaxCSVArray(tempHarga)
+            (hargaMin, indexMin) = MinCSVArray(tempHarga)
+            idMax = CSVId.arr[indexMax]
+            idMin = CSVId.arr[indexMin]
+
+            print("> Total Candi:", totalCandi)
+            print("> Total Pasir yang digunakan:", totalPasir)
+            print("> Total Batu yang digunakan:", totalBatu)
+            print("> Total Air yang digunakan:", totalAir)
+            print("> ID Candi Termahal:", idMax, "(Rp" + str(hargaMax) + ")")
+            print("> ID Candi Termurah:", idMin, "(Rp" + str(hargaMin) + ")")

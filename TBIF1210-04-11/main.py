@@ -31,6 +31,7 @@ from F05_UbahJin import UbahJin
 from F06_Bangun import Bangun
 from F07_Kumpul import Kumpul
 from F08_Batch import BatchBangun, BatchKumpul
+from F09_LaporanJin import LaporanJin
 from F10_LaporanCandi import LaporanCandi
 from F11_HancurkanCandi import HancurkanCandi
 from F12_AyamBerkokok import AyamBerkokok
@@ -76,7 +77,7 @@ while True :
         # print(CSVUsername.arr)
     
     # F04 - Hapus Jin
-    elif func == "hapusjin" :
+    elif func == "hapusjin" :   
         (CSVUsername, CSVPassword, CSVRole, CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir) = HapusJin(role, CSVUsername, CSVPassword, CSVRole, CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir)
         # print(CSVUsername.arr)
 
@@ -106,10 +107,14 @@ while True :
     elif func == "batchkumpul" :
         CSVJumlah = BatchKumpul (role, CSVRole, CSVNama, CSVJumlah)
         # print(CSVJumlah.arr)
-        
+    
+    # F09 - Laporan Jin
+    elif func == "laporanjin" :
+        LaporanJin(role, CSVUsername, CSVRole, CSVPembuat, CSVNama, CSVJumlah)
+    
     # F10 - Laporan Candi
     elif func == "laporancandi" :
-        LaporanCandi(CSVId, CSVPasir, CSVBatu, CSVAir)
+        LaporanCandi(role, CSVId, CSVPasir, CSVBatu, CSVAir)
         
     # F11 - Hancurkan Candi
     elif func == "hancurkancandi" :

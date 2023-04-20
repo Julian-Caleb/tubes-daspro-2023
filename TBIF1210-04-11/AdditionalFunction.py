@@ -6,6 +6,7 @@ from BonusFunction import Lcg_rng
 #-----------------------------------------------------------------------------------#
 # FUNCTION LENGTHARRAY 
 # Fungsi LengthArray menerima sebuah array dan mengembalikan banyak elemen efektif dari indeks 0 hingga elemen sebelum MARK 
+# Menggunakan rekursif dengan basis arr[i] == "MARK" mengembalikan nilai 0 dan rekursi arr[i] /= "MARK" mengembalikan 1 + LengthArray(arr,i+1)
 #   I.S. Sebuah array yang mengandung MARK
 #   F.S. Banyak elemen efektif 
 
@@ -15,24 +16,14 @@ from BonusFunction import Lcg_rng
 # i, count : int
 
 # ALGORITMA 
-def LengthArray (arr: List) -> int :
+def LengthArray (arr: List, i : int = 0) -> int :
     
-    # inisialisasi variabel
-    i = 0
-    count = 0
-    
-    # mengecek mark
-    while (arr[i] != 'MARK') :
-        
-        # apabila elemen tidak kosong
-        if (arr[i] != None) :
-        
-            # menambahkan jumlah elemen
-            count += 1
-        
-        i += 1
-            
-    return i
+    # rekursif
+    if arr[i] == "MARK" : # basis
+        return 0
+    else : # rekursi, arr[i] != "MARK"
+        return 1 + LengthArray(arr,i+1)
+
 
 # APLIKASI
 # print(LengthArray(['Bondowoso', 'Roro', 'Lmao', 'MARK', None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]))
@@ -169,7 +160,8 @@ def AppendCSVArray (CSVArray : CSVArray, element : str) -> CSVArray :
 #-----------------------------------------------------------------------------------#
 
 # FUNCTION ORDCHAR 
-# Function OrdChar menerima sebuah input sebuah karakter dan mengembalikan nilai (leksikografis) berdasarkan urutan alfabet referensi 
+# Function OrdChar menerima sebuah input sebuah karakter dan mengembalikan nilai (leksikografis) berdasarkan urutan alfabet referensi
+# Menggunakan rekursif dengan basis jika x = alphabet[i] mengembalikan i + 1, dan rekursi jika x /= alphabet[i] mengembalikan OrdChar (x, i+1) 
 #   I.S. sebuah char
 #   F.S. integer urutan ke berapa karakter tersebut berada 
 
@@ -179,12 +171,18 @@ def AppendCSVArray (CSVArray : CSVArray, element : str) -> CSVArray :
 # index : integer
 
 # ALGORITMA
-def OrdChar (x : str) -> int :
+def OrdChar (x : str, i : int = 0) -> int :
+    
+    # asumsikan pasti ketemu
+    # inisialisasi variabel
     alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
-    index = 0 
-    while x != alphabet[index] :
-        index += 1
-    return index
+    if x == alphabet[i] : # basis
+        return i + 1
+    else : # rekursif, x != alphabet[i]
+        return OrdChar(x, i + 1)
+    
+# APLIKASI
+# print(OrdChar("z"))
 
 #-----------------------------------------------------------------------------------#
 
@@ -248,7 +246,7 @@ def CompareString (stringOne : str, stringTwo : str, op : int) -> str :
 def CompareArrayOfString (arr : List, op : str) -> str :
     output = arr[0]
     n = 1
-    while n < LengthArray(arr) :
+    while n < LengthArray(arr) and arr[n] != "MARK" :
         output = CompareString (output, arr[n], op)
         n += 1
         
@@ -258,6 +256,7 @@ def CompareArrayOfString (arr : List, op : str) -> str :
 
 # FUNCTION INDEXOF 
 # function IndexOf menerima input sebuah array of string dan sebuah keyword string, mencari pada index keberapa string tersebut berada pada array (membaca index pertama kali string tersebut muncul) dan mengembalikan index tersebut. Asumsi string pasti ditemukan (dikarenakan pemanggilan MemberOf sebelum IndexOf).
+# Menggunakan rekursi dengan basis jika arr[i] = keyword mengembalikan i dan rekursi jika arr[i] /= keyword mengembalikan IndexOf(arr, keyword, i+1)    
 #	I.S. sebuah array of string dan sebuah string
 #	F.S. integer index keberapa string tersebut (pertama kali) muncul pada array 
 
@@ -269,18 +268,12 @@ def CompareArrayOfString (arr : List, op : str) -> str :
 # i : int
 
 # ALGORITMA
-def IndexOf (arr : List, keyword : str) -> int :
+def IndexOf (arr : List, keyword : str, i : int = 0) -> int :
 
-    # inisialisasi iterasi 
-    i = 0
-		
-	# iterasi dilakukan hingga keyword ditemukan 
-    while (arr[i] != keyword) :
-        i += 1
-        
-    # arr[i] = keyword 
-    IX = i + 1
-    return i
+    if arr[i] == keyword : # basis
+        return i
+    else : # rekursi, arr[i] != keyword
+        return IndexOf(arr, keyword, i + 1)
 
 # APLIKASI
 # print(IndexOf(["a","b","c","d","e"], "d"))
@@ -301,7 +294,7 @@ def IndexOf (arr : List, keyword : str) -> int :
 # i : int 
 
 # ALGORITMA 
-def MemberOf (arr: List, keyword : str) -> bool :
+def MemberOf (arr: List, keyword : str, i : int = 0) -> bool :
     
     # inisialisasi iterasi
     Nmax = 103
@@ -326,6 +319,7 @@ def MemberOf (arr: List, keyword : str) -> bool :
 
 # FUNCTION FREQUENCY
 # Function Frequency menerima sebuah array of string dan keyword string dan mencari berapa kali kemunculan keyword tersebut dalam string.
+# Menggunakan rekursi dengan basis jika i = 103 atau i = "MARK" mengembalikan 0, rekursi arr[i] = keyword mengembalikan 1 + Frequency(arr, keyword, i + 1), dan rekursi jika arr[i] /= keyword mengembalikan Frequency(arr, keyword, i + 1)
 #   I.S. sebuah array of string dan sebuah string 
 #   F.S. integer banyak kemunculan string tersebut dalam array 
 
@@ -337,21 +331,14 @@ def MemberOf (arr: List, keyword : str) -> bool :
 # i, count : int
 
 # ALGORITMA 
-def Frequency (arr : List, keyword : str) -> int :
-    
-    # inisialisasi iterasi
-    Nmax = 103
-    i = 0
-    count = 0
-    
-    # iterasi menghitung berapa kali ditemukan
-    while (i < Nmax) :
-        if (arr[i] == keyword) :
-            count += 1
-            # print(count)
-        i += 1
-    
-    return count
+def Frequency (arr : List, keyword : str, i : int = 0) -> int : 
+ 
+    if i == 103 or arr[i] == "MARK": # basis 
+        return 0
+    elif arr[i] == keyword : # rekursi 1
+        return 1 + Frequency(arr, keyword, i + 1)
+    else : # rekursi 2, arr[i] /= keyword
+        return Frequency(arr, keyword, i + 1)
 
 # APLIKASI
 # print(Frequency(['bandung_bondowoso', 'roro_jonggrang', 'MARK', None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, 
@@ -394,7 +381,7 @@ def Delete (arr : List, index : int) -> List :
 # type CSVArray : <arr : array [0..Nmax-1] of string,
 # 				Neff : integer >
 
-# function Delete (arr : arr, index : integer) -> arr
+# function Delete (arr : List, index : integer) -> List
 
 # ALGORITMA 
 def DeleteCSVArray (CSVArray : CSVArray, index : int) -> CSVArray :
