@@ -107,7 +107,7 @@ def HapusJin (role : str, CSVUsername : CSVArray, CSVPassword : CSVArray, CSVRol
 
                     # jika tidak, 
                     else : # konfirmasi == “N” 
-                        print("Penghapusan jin dibatalkan") # custom sendiri 
+                        print("Penghapusan jin dibatalkan.") # custom sendiri 
 
                     
     return (CSVUsername, CSVPassword, CSVRole, CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir)
