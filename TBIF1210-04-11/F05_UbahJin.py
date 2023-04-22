@@ -42,6 +42,9 @@ def UbahJin (role : str, CSVUsername : CSVArray, CSVPassword : CSVArray, CSVRole
 
         else :
             
+            # meminta input username
+            usernameJin = str(input("Masukkan username jin : "))
+            
             # Searching apakah ada atau tidak, jika ada
             if (MemberOf(CSVUsername.arr, usernameJin)) :
                 index = IndexOf(CSVUsername.arr, usernameJin)
@@ -60,7 +63,7 @@ def UbahJin (role : str, CSVUsername : CSVArray, CSVPassword : CSVArray, CSVRole
                 print(f"Jin ini bertipe {roleJinAwal}. Yakin ingin mengubah ke tipe {roleJinAkhir} (Y/N)?", end=" ")
                 konfirmasi = str(input())
 
-                if (konfirmasi == "Y"):
+                if (konfirmasi == "Y") or (konfirmasi == "y"):
                     # mengubah role
                     CSVRole.arr[index] = roleJin
                     print("Jin telah berhasil diubah.")

@@ -77,7 +77,7 @@ def Bangun (username : str, role : str, CSVId : CSVArray, CSVPembuat : CSVArray,
                 AppendCSVArray(CSVAir, str(air))
 
                 print("Candi berhasil dibangun.")
-                print(f"Sisa candi yang perlu dibangun: {100-i}")
+                print(f"Sisa candi yang perlu dibangun: {100 - CSVId.Neff}")
             else:
                 print("Candi berhasil dibangun.")
                 print(f"Sisa candi yang perlu dibangun: 0")

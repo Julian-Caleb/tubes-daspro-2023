@@ -14,7 +14,7 @@ from AdditionalFunction import AppendCSVArray, MinCSVArray, MaxCSVArray, TotalHa
 #				Neff : integer >
 	
 # CSVId, CSVPasir, CSVBatu, CSVAir : CSVArray
-# tempHarga : CSVArray
+# tempHarga, tempId : CSVArray
 
 # totalCandi, totalPasir, totalBatu, totalAir : integer
 # hargaMax, hargaMin, idMax, idMin : integer
@@ -61,10 +61,12 @@ def LaporanCandi (role : str, CSVId : CSVArray, CSVPasir : CSVArray, CSVBatu : C
             totalBatu = SumCSVArray(CSVBatu)
             totalAir = SumCSVArray(CSVAir)
 
-            # { membuat CSVArray sementara untuk harga }
+            # { membuat CSVArray sementara untuk harga dan id }
             Nmax = 103
             tempHarga = CSVArray([None for i in range (Nmax)], 0)
             tempHarga.arr[0] = "MARK"
+            tempId = CSVArray([None for i in range (Nmax)], 0)
+            tempId.arr[0] = "MARK"
 
             # { iterasi menghitung harga total }
             i = 0
@@ -75,18 +77,15 @@ def LaporanCandi (role : str, CSVId : CSVArray, CSVPasir : CSVArray, CSVBatu : C
 
                     # { menghitung harga dan dimasukkan tempHarga }
                     AppendCSVArray(tempHarga, str(TotalHarga(int(CSVPasir.arr[i]), int(CSVBatu.arr[i]), int(CSVAir.arr[i]))))
-
-                else: # { CSVId.arr[i] /= None }
-
-                    AppendCSVArray(tempHarga, None)
+                    AppendCSVArray(tempId, CSVId.arr[i])
 
                 i = i + 1
-
+            
             # { CSVId.arr[i] = “MARK” }
             (hargaMax, indexMax) = MaxCSVArray(tempHarga)
             (hargaMin, indexMin) = MinCSVArray(tempHarga)
-            idMax = CSVId.arr[indexMax]
-            idMin = CSVId.arr[indexMin]
+            idMax = tempId.arr[indexMax]
+            idMin = tempId.arr[indexMin]
 
             print("> Total Candi:", totalCandi)
             print("> Total Pasir yang digunakan:", totalPasir)

@@ -64,7 +64,7 @@ def HapusJin (role : str, CSVUsername : CSVArray, CSVPassword : CSVArray, CSVRol
                     konfirmasi = input()
                                     
                     # jika ya, 
-                    if (konfirmasi == "Y") :
+                    if (konfirmasi == "Y") or (konfirmasi == "y") :
 
                         # menghapus dari CSVUsername, CSVPassword, CSVRole 
                         # mencari index 
@@ -77,7 +77,7 @@ def HapusJin (role : str, CSVUsername : CSVArray, CSVPassword : CSVArray, CSVRol
                         CSVPassword.arr = Delete (CSVPassword.arr, index)
                         CSVPassword.Neff = CSVPassword.Neff - 1
 
-                        CSVPassword.arr = Delete (CSVRole.arr, index)
+                        CSVRole.arr = Delete (CSVRole.arr, index)
                         CSVRole.Neff = CSVRole.Neff - 1
                             
                         #  menghapus dari CSVCandi 
@@ -107,7 +107,7 @@ def HapusJin (role : str, CSVUsername : CSVArray, CSVPassword : CSVArray, CSVRol
 
                     # jika tidak, 
                     else : # konfirmasi == “N” 
-                        print("Penghapusan jin dibatalkan.") # custom sendiri 
+                        print("Penghapusan jin dibatalkan.") 
 
                     
     return (CSVUsername, CSVPassword, CSVRole, CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir)

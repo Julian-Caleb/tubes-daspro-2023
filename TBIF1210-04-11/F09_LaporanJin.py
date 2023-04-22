@@ -52,6 +52,8 @@ def LaporanJin(role : str, CSVUsername : CSVArray, CSVRole : CSVArray, CSVPembua
         # inisiasi variabel untuk mencari jin terajin 
         tempBanyakCandi = CSVArray([None for i in range (Nmax)], 0)
         tempBanyakCandi.arr[0] = "MARK"
+        tempPembuat = CSVArray([None for i in range (Nmax)], 0)
+        tempPembuat.arr[0] = "MARK"
         
         # iterasi untuk mengisi tempBanyakCandi
         i = 0
@@ -62,6 +64,7 @@ def LaporanJin(role : str, CSVUsername : CSVArray, CSVRole : CSVArray, CSVPembua
                 
                 # menghitung banyak candi dan dimasukkan tempBanyakCandi
                 AppendCSVArray(tempBanyakCandi, str(Frequency(CSVPembuat.arr, CSVUsername.arr[i])))
+                AppendCSVArray(tempPembuat, CSVUsername.arr[i])
                 
             i = i + 1
         
@@ -75,7 +78,7 @@ def LaporanJin(role : str, CSVUsername : CSVArray, CSVRole : CSVArray, CSVPembua
         
         # jika hanya 1
         elif Frequency(tempBanyakCandi.arr, str(nilaiMax)) == 1:
-            jinTerajin = CSVUsername.arr[indexMax]
+            jinTerajin = tempPembuat.arr[indexMax]
         
         # Jika lebih dari 1
         else: # Frequency(tempBanyakCandi.arr, str(nilaiMax)) > 1
@@ -87,7 +90,7 @@ def LaporanJin(role : str, CSVUsername : CSVArray, CSVRole : CSVArray, CSVPembua
             while (tempBanyakCandi.arr[i] != "MARK") :
                 
                 if (int(tempBanyakCandi.arr[i]) == nilaiMax) :
-                    AppendCSVArray(tempJin, CSVUsername.arr[i])
+                    AppendCSVArray(tempJin, tempPembuat.arr[i])
             
                 i += 1
             
