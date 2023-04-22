@@ -17,25 +17,35 @@ from BonusFunction import Lcg_rng
 	
 # CSVId : CSVArray
 
+# role : string
 # jumlahCandi : integer
 
 # function exit() fungsi bawaan python untuk keluar dari program
 
-def AyamBerkokok(CSVId : CSVArray):
-    # Mengeluarkan pesan awal
-    print("Kukuruyuk.. Kukuruyuk..\n")
+def AyamBerkokok(role : str, CSVId : CSVArray):
+    
+    # Mengecek apakah (role) diisi dengan "roro_jonggrang"
+    # Jika tidak
+    if role != "roro_jonggrang":
 
-    # Menghitung banyak candi yang sudah dibangun
-    jumlahCandi = CSVId.Neff
-    print(f"Jumlah candi: {jumlahCandi}\n")
-
-    # Menentukan pemenang
-    if jumlahCandi != 100:
-        print("Selamat, Roro Jonggrang memenangkan permainan!\n")
-        print("*Bandung Bondowoso angry noise*")
-        print("Roro Jonggrang dikutuk menjadi candi.")
+        print ("Ayam berkokok hanya dapat diakses oleh Roro Jonggrang.")
+    
     else:
-        print("Yah, Bandung Bondowoso memenangkan permainan!")
         
-    # Keluar
-    exit()
+        # Mengeluarkan pesan awal
+        print("Kukuruyuk.. Kukuruyuk..\n")
+
+        # Menghitung banyak candi yang sudah dibangun
+        jumlahCandi = CSVId.Neff
+        print(f"Jumlah candi: {jumlahCandi}\n")
+
+        # Menentukan pemenang
+        if jumlahCandi != 100:
+            print("Selamat, Roro Jonggrang memenangkan permainan!\n")
+            print("*Bandung Bondowoso angry noise*")
+            print("Roro Jonggrang dikutuk menjadi candi.")
+        else:
+            print("Yah, Bandung Bondowoso memenangkan permainan!")
+            
+        # Keluar
+        exit()

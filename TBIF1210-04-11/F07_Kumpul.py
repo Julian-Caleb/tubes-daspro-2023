@@ -20,19 +20,20 @@ from AdditionalFunction import AmbilBahan, IndexOf
 
 def Kumpul (role : str, CSVNama : CSVArray, CSVJumlah : CSVArray) -> (CSVArray):
    
-   
-    # Mengecek apakah (role) diisi dengan "jin_pembangun"
+    # Mengecek apakah (role) diisi dengan "jin_pengumpul"
     # Jika tidak
     if role != "jin_pengumpul":
-        return CSVJumlah
+        
+        print ("Kumpul hanya dapat diakses oleh jin pengumpul.")
+
     
     # Jika ya, randomize bahan bangunan yang dibutuhkan oleh candi
     else:
         pasir, batu, air = AmbilBahan (CSVNama, CSVJumlah, "random")
         print(str(f"Jin menemukan {pasir} pasir, {batu} batu, dan {air} air."))
     
-    CSVJumlah.arr[IndexOf(CSVNama.arr, "pasir")] = str(int(CSVJumlah.arr[IndexOf(CSVNama.arr, "pasir")]) + pasir)
-    CSVJumlah.arr[IndexOf(CSVNama.arr, "batu")] = str(int(CSVJumlah.arr[IndexOf(CSVNama.arr, "batu")]) + batu)
-    CSVJumlah.arr[IndexOf(CSVNama.arr, "air")] = str(int(CSVJumlah.arr[IndexOf(CSVNama.arr, "air")]) + air)
+        CSVJumlah.arr[IndexOf(CSVNama.arr, "pasir")] = str(int(CSVJumlah.arr[IndexOf(CSVNama.arr, "pasir")]) + pasir)
+        CSVJumlah.arr[IndexOf(CSVNama.arr, "batu")] = str(int(CSVJumlah.arr[IndexOf(CSVNama.arr, "batu")]) + batu)
+        CSVJumlah.arr[IndexOf(CSVNama.arr, "air")] = str(int(CSVJumlah.arr[IndexOf(CSVNama.arr, "air")]) + air)
     
     return CSVJumlah

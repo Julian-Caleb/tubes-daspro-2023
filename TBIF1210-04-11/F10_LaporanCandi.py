@@ -36,7 +36,7 @@ def LaporanCandi (role : str, CSVId : CSVArray, CSVPasir : CSVArray, CSVBatu : C
     # cek role 
     if (role != "bandung_bondowoso") :
 
-        print("Laporan jin hanya dapat diakses oleh akun Bandung Bondowoso.")
+        print("Laporan candi hanya dapat diakses oleh akun Bandung Bondowoso.")
 
     else : # role == "bandung_bondowoso" 
 

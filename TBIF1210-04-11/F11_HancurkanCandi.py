@@ -30,7 +30,8 @@ def HancurkanCandi(role : str, CSVId : CSVArray, CSVPembuat : CSVArray, CSVPasir
     # Mengecek apakah (role) diisi dengan "roro_jonggrang"
     # Jika tidak
     if role != "roro_jonggrang":
-        return (CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir)
+
+        print ("Hancurkan candi hanya dapat diakses oleh Roro Jonggrang.")
     
     else:
      
@@ -55,4 +56,4 @@ def HancurkanCandi(role : str, CSVId : CSVArray, CSVPembuat : CSVArray, CSVPasir
         else:
             print("Tidak ada candi dengan ID tersebut.")
         
-        return (CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir)
+    return (CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir)

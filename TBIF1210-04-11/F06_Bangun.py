@@ -33,7 +33,8 @@ def Bangun (username : str, role : str, CSVId : CSVArray, CSVPembuat : CSVArray,
     # Mengecek apakah (role) diisi dengan "jin_pembangun"
     # Jika tidak
     if role != "jin_pembangun":
-        return ( CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir, CSVNama, CSVJumlah)
+        
+        print ("Bangun hanya dapat diakses oleh jin pembangun.")
     
     else:
         # Bahan yang dibutuhkan untuk membuat candi
@@ -65,7 +66,7 @@ def Bangun (username : str, role : str, CSVId : CSVArray, CSVPembuat : CSVArray,
             while MemberOf(CSVId.arr, str(i)):
                 i = i + 1
             
-            if i < 100:
+            if i < 101:
                 # id
                 AppendCSVArray(CSVId, str(i))
                 # Pembuat
@@ -81,7 +82,7 @@ def Bangun (username : str, role : str, CSVId : CSVArray, CSVPembuat : CSVArray,
                 print("Candi berhasil dibangun")
                 print(f"Sisa candi yang perlu dibangun: 0")
     
-        return ( CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir, CSVNama, CSVJumlah)
+    return ( CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir, CSVNama, CSVJumlah)
 
 
 

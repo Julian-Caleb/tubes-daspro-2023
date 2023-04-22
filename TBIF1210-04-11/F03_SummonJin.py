@@ -31,56 +31,55 @@ from AdditionalFunction import Frequency, MemberOf, AppendCSVArray
 def SummonJin (role : str, CSVUsername: CSVArray, CSVPassword: CSVArray, CSVRole: CSVArray) -> (CSVArray, CSVArray, CSVArray) :
 
     if(role != "bandung_bondowoso"):
-        return (CSVUsername, CSVPassword ,CSVRole)
+        print("Summon jin hanya dapat diakses oleh akun Bandung Bondowoso.")
     
     else: # role == "bandung_bondowoso"
         if (Frequency (CSVRole.arr, "jin_pengumpul") + Frequency(CSVRole.arr, "jin_pembangun")) == 100 :
-            print("Jumlah Jin telah maksimal! (100 jin). Bandung tidak dapat men-summon lebih dari itu")
-            return (CSVUsername, CSVPassword ,CSVRole)
+            print("Jumlah Jin telah maksimal! (100 jin). Bandung tidak dapat men-summon lebih dari itu.")
         
         else: # role : "bandung_bondowoso"
             print("Jenis jin yang dapat dipanggil:")
             print("(1) Pengumpul - Bertugas mengumpulkan bahan bangunan")
             print("(2) Pembangun - Bertugas membangun candi\n")
             
-        while True :
-            nomor = int(input("Masukkan nomor jenis jin yang ingin dipanggil: "))
-            if (nomor != 1) and (nomor != 2) :
-                print("Tidak ada jenis jin bernomor", nomor, "!")
-            else :
-                break
-        
-        if (nomor == 1):
-            print("\nMemilih jin “Pengumpul”.\n")
-            roleJin = "jin_pengumpul"
-        elif (nomor == 2):
-            print("\nMemilih jin “Pembangun”.\n")
-            roleJin = "jin_pembangun"
-        
-        while True :
-            usernameJin = input("Masukkan username jin: ")
-            if MemberOf(CSVUsername.arr, usernameJin) :
-                print("Username", usernameJin, "sudah diambil!")
-            else : 
-                break
-        
-        while True :
-            passwordJin = input("Masukkan password jin: ")
-            if len(passwordJin) < 5 or len(passwordJin) > 25 :
-                print("Password panjangnya harus 5-25 karakter!")
-            else : 
-                break
+            while True :
+                nomor = int(input("Masukkan nomor jenis jin yang ingin dipanggil: "))
+                if (nomor != 1) and (nomor != 2) :
+                    print("Tidak ada jenis jin bernomor", nomor, "!")
+                else :
+                    break
+            
+            if (nomor == 1):
+                print("\nMemilih jin “Pengumpul”.\n")
+                roleJin = "jin_pengumpul"
+            elif (nomor == 2):
+                print("\nMemilih jin “Pembangun”.\n")
+                roleJin = "jin_pembangun"
+            
+            while True :
+                usernameJin = input("Masukkan username jin: ")
+                if MemberOf(CSVUsername.arr, usernameJin) :
+                    print("Username", usernameJin, "sudah diambil!")
+                else : 
+                    break
+            
+            while True :
+                passwordJin = input("Masukkan password jin: ")
+                if len(passwordJin) < 5 or len(passwordJin) > 25 :
+                    print("Password panjangnya harus 5-25 karakter!")
+                else : 
+                    break
 
-        print("Mengumpulkan sesajen...")
-        print("Menyerahkan sesajen...")
-        print("Membacakan mantra...")
-        print("Jin", usernameJin, "berhasil dipanggil!")
+            print("Mengumpulkan sesajen...")
+            print("Menyerahkan sesajen...")
+            print("Membacakan mantra...")
+            print("Jin", usernameJin, "berhasil dipanggil!")
 
-        # print(CSVUsername.arr)
-        # Memasukkan data ke dalam array 
-        AppendCSVArray(CSVUsername, usernameJin)
-        AppendCSVArray(CSVPassword, passwordJin)
-        AppendCSVArray(CSVRole, roleJin)
+            # print(CSVUsername.arr)
+            # Memasukkan data ke dalam array 
+            AppendCSVArray(CSVUsername, usernameJin)
+            AppendCSVArray(CSVPassword, passwordJin)
+            AppendCSVArray(CSVRole, roleJin)
 
-        return (CSVUsername, CSVPassword, CSVRole)
+    return (CSVUsername, CSVPassword, CSVRole)
         

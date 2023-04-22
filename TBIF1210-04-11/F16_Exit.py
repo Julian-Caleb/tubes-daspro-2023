@@ -17,6 +17,7 @@ def Exit(CSVUsername : CSVArray, CSVPassword : CSVArray, CSVRole : CSVArray, CSV
     print("Apakah Anda mau melakukan penyimpanan file yang sudah diubah? (y/n)", end =" ")
     response = str(input())
     while response != "Y" and response != "y" and response != "N" and response != "n":
+        print("Apakah Anda mau melakukan penyimpanan file yang sudah diubah? (y/n)", end =" ")
         response = str(input())
     # Jika ingin disimpan
     if response == "Y" or response == "y":

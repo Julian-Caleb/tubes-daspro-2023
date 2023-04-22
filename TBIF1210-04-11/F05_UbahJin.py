@@ -2,7 +2,7 @@ from CSVParser import CSVParser
 from TipeBentukan import CSVArray
 from typing import List
 from TipeBentukan import CSVArray
-from AdditionalFunction import MemberOf, IndexOf, Delete
+from AdditionalFunction import MemberOf, IndexOf, Delete, Frequency
 
 # FUNCTION UBAHJIN 
 # Fungsi UbahJin menerima role dan 7 CSVArray yaitu CSVUsername, CSVRole, CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir, meminta username input dari user, mendeteksi apakah ada username pada CSVUsername, dan meminta konfirmasi jika tipenya ingin diubah (jika ada). Jika tipe diubah dari pembangun ke pengumpul, candi yang dibuat akan dihancurkan
@@ -31,39 +31,44 @@ def UbahJin (role : str, CSVUsername : CSVArray, CSVPassword : CSVArray, CSVRole
     # Mengecek apakah (role) diisi dengan "bandung_bondowoso"
     # Jika tidak
     if role != "bandung_bondowoso":
-        return (CSVUsername, CSVPassword, CSVRole, CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir)
+        print ("Ubah jin hanya dapat diakses oleh Bandung Bondowoso.")
     
     # Jika ya
     else:
-        usernameJin = str(input("Masukkan username jin : "))
+        
+        # jika belum ada jin
+        if (Frequency (CSVRole.arr, "jin_pengumpul") + Frequency(CSVRole.arr, "jin_pembangun")) == 0 :
+            print("Belum ada jin yang dibuat, silahkan summon jin terlebih dahulu.")
 
-        # Searching apakah ada atau tidak, jika ada
-        if (MemberOf(CSVUsername.arr, usernameJin)) :
-            index = IndexOf(CSVUsername.arr, usernameJin)
-            roleJin = CSVRole.arr[index]
-
-            # berubah ke apa
-            if (roleJin == "jin_pembangun"):
-                roleJinAwal = "Pembangun"
-                roleJinAkhir = "Pengumpul"
-                roleJin = "jin_pengumpul"		
-            else:
-                roleJinAwal = "Pengumpul"
-                roleJinAkhir = "Pembangun"
-                roleJin = "jin_pembangun"
-            # meminta konfirmasi
-            print(f"Jin ini bertipe {roleJinAwal}. Yakin ingin mengubah ke tipe {roleJinAkhir} (Y/N)?", end="")
-            konfirmasi = str(input())
-
-            if (konfirmasi == "Y"):
-                # mengubah role
-                CSVRole.arr[index] = roleJin
-                print("Jin telah berhasil diubah")
-            else:
-                print("Pengubahan jin dibatalkan")
-
-        # jika tidak ada username
-        else:
-            print("Tidak ada jin dengan username tersebut.")
+        else :
             
-        return (CSVUsername, CSVPassword, CSVRole, CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir)
+            # Searching apakah ada atau tidak, jika ada
+            if (MemberOf(CSVUsername.arr, usernameJin)) :
+                index = IndexOf(CSVUsername.arr, usernameJin)
+                roleJin = CSVRole.arr[index]
+
+                # berubah ke apa
+                if (roleJin == "jin_pembangun"):
+                    roleJinAwal = "Pembangun"
+                    roleJinAkhir = "Pengumpul"
+                    roleJin = "jin_pengumpul"		
+                else:
+                    roleJinAwal = "Pengumpul"
+                    roleJinAkhir = "Pembangun"
+                    roleJin = "jin_pembangun"
+                # meminta konfirmasi
+                print(f"Jin ini bertipe {roleJinAwal}. Yakin ingin mengubah ke tipe {roleJinAkhir} (Y/N)?", end=" ")
+                konfirmasi = str(input())
+
+                if (konfirmasi == "Y"):
+                    # mengubah role
+                    CSVRole.arr[index] = roleJin
+                    print("Jin telah berhasil diubah.")
+                else:
+                    print("Pengubahan jin dibatalkan.")
+
+            # jika tidak ada username
+            else:
+                print("Tidak ada jin dengan username tersebut.")
+            
+    return (CSVUsername, CSVPassword, CSVRole, CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir)

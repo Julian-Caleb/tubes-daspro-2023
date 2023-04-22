@@ -124,7 +124,7 @@ while True :
     
     # F12 - Ayam Berkokok
     elif func == "ayamberkokok" :
-        AyamBerkokok(CSVId)
+        AyamBerkokok(role, CSVId)
 
     # F14 - Save
     elif func == "save" :

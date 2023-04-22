@@ -32,7 +32,8 @@ def BatchBangun (role : str, CSVUsername : CSVArray, CSVRole : CSVArray, CSVId :
     
     # cek role, jika salah 
     if (role != "bandung_bondowoso") :
-        return (CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir, CSVJumlah)
+        
+        print("Batch bangun hanya dapat diakses oleh akun Bandung Bondowoso.")
     
     # jika benar
     else : # role == "bandung_bondowoso" 
@@ -103,7 +104,7 @@ def BatchBangun (role : str, CSVUsername : CSVArray, CSVRole : CSVArray, CSVId :
                         j = j + 1
                         
                     # asumsikan jika id > 100, tidak dimasukkan array. 
-                    if ( j < 100 ) :
+                    if ( j < 101 ) :
                         
                         # id 
                         AppendCSVArray(CSVId, str(j))
@@ -149,7 +150,7 @@ def BatchBangun (role : str, CSVUsername : CSVArray, CSVRole : CSVArray, CSVId :
                 if (SumCSVArray (tempAirArray) > air) :
                     print(SumCSVArray (tempAirArray) - air, "air.")
                 
-            return (CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir, CSVJumlah)
+    return (CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir, CSVJumlah)
 
 #-----------------------------------------------------------------------------------#
 
@@ -178,38 +179,40 @@ def BatchKumpul (role : str, CSVRole : CSVArray, CSVNama : CSVArray, CSVJumlah :
 
     # cek role 
     if (role != "bandung_bondowoso") :
-        return (CSVJumlah)
+        
+        print("Batch kumpul hanya dapat diakses oleh akun Bandung Bondowoso.")
 
-    else : # role = “bandung_bondowoso” 
+    else : # role == “bandung_bondowoso” 
         
         # inisialisasi 
         pasir = 0 
         batu = 0
         air = 0
 
-    # menghitung banyak jin_pengumpul 
-    jumlahJin = Frequency(CSVRole.arr, "jin_pengumpul")
+        # menghitung banyak jin_pengumpul 
+        jumlahJin = Frequency(CSVRole.arr, "jin_pengumpul")
 
-    # jika tidak ada jin pengumpul 
-    if (jumlahJin == 0) :
-        print ("Kumpul gagal. Anda tidak punya jin pengumpul. Silahkan summon terlebih dahulu.")
+        # jika tidak ada jin pengumpul 
+        if (jumlahJin == 0) :
+            print ("Kumpul gagal. Anda tidak punya jin pengumpul. Silahkan summon terlebih dahulu.")
 
-    # iterasi sebanyak jumlah jin pengumpul 
-    for i in range (jumlahJin) :
+        else : # jumlahJin > 0
+            # iterasi sebanyak jumlah jin pengumpul 
+            for i in range (jumlahJin) :
 
-        # randomize bahan bangunan yang dibutuhkan oleh candi }
-        (tempPasir, tempBatu, tempAir) = AmbilBahan (CSVNama, CSVJumlah, "random")
-        pasir = pasir + tempPasir
-        batu = batu + tempBatu
-        air = air + tempAir
+                # randomize bahan bangunan yang dibutuhkan oleh candi }
+                (tempPasir, tempBatu, tempAir) = AmbilBahan (CSVNama, CSVJumlah, "random")
+                pasir = pasir + tempPasir
+                batu = batu + tempBatu
+                air = air + tempAir
 
-    # kirim pesan 
-    print("Mengerahkan", jumlahJin, "jin untuk mengumpulkan bahan.")
-    print("Jin menemukan total", pasir, "pasir,", batu, "batu, dan", air, "air.")
+            # kirim pesan 
+            print("Mengerahkan", jumlahJin, "jin untuk mengumpulkan bahan.")
+            print("Jin menemukan total", pasir, "pasir,", batu, "batu, dan", air, "air.")
 
-    # menjumlahkan ke database 
-    CSVJumlah.arr[IndexOf(CSVNama.arr, "pasir")] = str(int(CSVJumlah.arr[IndexOf(CSVNama.arr, "pasir")]) + pasir)
-    CSVJumlah.arr[IndexOf(CSVNama.arr, "batu")] = str(int(CSVJumlah.arr[IndexOf(CSVNama.arr, "batu")]) + batu)
-    CSVJumlah.arr[IndexOf(CSVNama.arr, "air")] = str(int(CSVJumlah.arr[IndexOf(CSVNama.arr, "air")]) + air)
+            # menjumlahkan ke database 
+            CSVJumlah.arr[IndexOf(CSVNama.arr, "pasir")] = str(int(CSVJumlah.arr[IndexOf(CSVNama.arr, "pasir")]) + pasir)
+            CSVJumlah.arr[IndexOf(CSVNama.arr, "batu")] = str(int(CSVJumlah.arr[IndexOf(CSVNama.arr, "batu")]) + batu)
+            CSVJumlah.arr[IndexOf(CSVNama.arr, "air")] = str(int(CSVJumlah.arr[IndexOf(CSVNama.arr, "air")]) + air)
 
     return (CSVJumlah)

@@ -47,13 +47,13 @@ def CSVParser(file : str, columnName : str) -> List :
         data = file.read()
     
     # memetakan data menjadi array dengan menghilangkan newline
-    templateList = [None for i in range(103)]
+    templateList = [None for i in range(104)]
     templateList[0] = MARK
     array = Split(data, templateList, "\n")
     
     # menghilangkan ; dari array, mengubahnya menjadi matrix
     i = 0
-    matrix = [None for i in range(103)]
+    matrix = [None for i in range(104)]
     while (i < LengthCSV(array)) and (array[i] != MARK):
         templateMatrixChildren = [None for i in range (6)]
         templateMatrixChildren[0] = MARK
