@@ -249,8 +249,10 @@ def CompareArrayOfString (arr : List, op : str) -> str :
     while n < LengthArray(arr) and arr[n] != "MARK" :
         output = CompareString (output, arr[n], op)
         n += 1
-        
     return output
+
+# APLIKASI
+# print(CompareArrayOfString(["Joni", "Joli", "Jarum", "MARK"], "<"))
 
 #-----------------------------------------------------------------------------------#
 

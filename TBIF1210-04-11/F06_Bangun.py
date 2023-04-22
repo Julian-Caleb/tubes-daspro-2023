@@ -48,7 +48,7 @@ def Bangun (username : str, role : str, CSVId : CSVArray, CSVPembuat : CSVArray,
 
         # Jika bahan tidak mencukupi
         if pasir > banyakPasir or batu > banyakBatu or air > banyakAir:
-            print("Bahan bangunan tidak mencukupi")
+            print("Bahan bangunan tidak mencukupi.")
             print("Candi tidak bisa dibangun!")
         else:
             # Mengurangi bahan yang dimiliki
@@ -76,10 +76,10 @@ def Bangun (username : str, role : str, CSVId : CSVArray, CSVPembuat : CSVArray,
                 AppendCSVArray(CSVBatu, str(batu))
                 AppendCSVArray(CSVAir, str(air))
 
-                print("Candi berhasil dibangun")
+                print("Candi berhasil dibangun.")
                 print(f"Sisa candi yang perlu dibangun: {100-i}")
             else:
-                print("Candi berhasil dibangun")
+                print("Candi berhasil dibangun.")
                 print(f"Sisa candi yang perlu dibangun: 0")
     
     return ( CSVId, CSVPembuat, CSVPasir, CSVBatu, CSVAir, CSVNama, CSVJumlah)
