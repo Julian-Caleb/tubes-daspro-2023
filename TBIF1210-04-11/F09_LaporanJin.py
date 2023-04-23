@@ -16,7 +16,7 @@ from AdditionalFunction import Frequency, AppendCSVArray, MaxCSVArray, MinCSVArr
 # tempBanyakCandi, tempJin, tempPembuat : CSVArray
 
 # nilaiMax, nilaiMin, indexMax, indexMin : integer
-# jumlahJin, i : integer
+# jumlahJin, jumlahJinPembangun, i : integer
 # jinTerajin, jinTermalas : string
 
 # function Frequency (arr : List, keyword : string) -> integer
@@ -47,6 +47,7 @@ def LaporanJin(role : str, CSVUsername : CSVArray, CSVRole : CSVArray, CSVPembua
         
         # Menghitung jumlah jin terlebih dahulu
         jumlahJin = Frequency(CSVRole.arr, "jin_pengumpul") + Frequency(CSVRole.arr, "jin_pembangun")
+        jumlahJinPembangun = Frequency(CSVRole.arr, "jin_pembangun")
         
         # jin terajin
         # inisiasi variabel untuk mencari jin terajin 
@@ -73,14 +74,9 @@ def LaporanJin(role : str, CSVUsername : CSVArray, CSVRole : CSVArray, CSVPembua
         
         # Cek ada lebih dari satu atau tidak
         # jika tidak ada
-        if jumlahJin == 0:
+        if CSVPembuat.Neff == 0 and jumlahJinPembangun == 0 :
             jinTerajin = "-"
-        
-        # jika hanya 1
-        elif Frequency(tempBanyakCandi.arr, str(nilaiMax)) == 1:
-            jinTerajin = tempPembuat.arr[indexMax]
-        
-        # Jika lebih dari 1
+            
         else: # Frequency(tempBanyakCandi.arr, str(nilaiMax)) > 1
             tempJin = CSVArray([None for i in range (Nmax)], 0)
             tempJin.arr[0] = "MARK"
@@ -115,14 +111,14 @@ def LaporanJin(role : str, CSVUsername : CSVArray, CSVRole : CSVArray, CSVPembua
                 AppendCSVArray(tempBanyakCandi, str(Frequency(CSVPembuat.arr, CSVUsername.arr[i])))
                 AppendCSVArray(tempPembuat, CSVUsername.arr[i])
                 
-            i = i + 1
+            i += 1
             
         # mencari jinTermalas
         (nilaiMin, indexMin) = MinCSVArray(tempBanyakCandi)
         
         # Cek ada lebih dari satu atau tidak
         # jika tidak ada
-        if jumlahJin == 0:
+        if jumlahJinPembangun == 0 :
             jinTermalas = "-"
         
         # jika hanya 1
