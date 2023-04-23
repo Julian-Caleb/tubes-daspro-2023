@@ -91,5 +91,5 @@ def LaporanCandi (role : str, CSVId : CSVArray, CSVPasir : CSVArray, CSVBatu : C
             print("> Total Pasir yang digunakan:", totalPasir)
             print("> Total Batu yang digunakan:", totalBatu)
             print("> Total Air yang digunakan:", totalAir)
-            print("> ID Candi Termahal:", idMax, "(Rp" + str(hargaMax) + ")")
-            print("> ID Candi Termurah:", idMin, "(Rp" + str(hargaMin) + ")")
+            print("> ID Candi Termahal:", idMax, "(Rp", format(hargaMax, ',') + ")")
+            print("> ID Candi Termurah:", idMin, "(Rp", format(hargaMin, ',') + ")")
